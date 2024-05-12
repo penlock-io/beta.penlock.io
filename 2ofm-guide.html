@@ -1,0 +1,178 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>2-of-M Split / Guide</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+</script>
+
+<style>
+    .sheet.column {
+        gap: 1em;
+    }
+
+    .sheet.column > section {
+        break-inside: auto;
+    }
+
+    .sheet.column h3 {
+        text-align: left;
+    }
+
+    dd {
+        margin-top: 1.6em;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print on normal printer paper.</li>
+        <li>Use the printed version when working with sensitive data.</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <h2>Split a Seed Phrase (2-of-M) / Guide</h2>
+
+    <aside>
+        <em>Note:</em> Prior experience of the 2-of-3 guide is required.
+    </aside>
+
+    <section>
+        <h3>Why?</h3>
+        <p>
+            While a 2-of-3 split is a good enough backup strategy, the 2-of-M
+            generalization is sometimes needed for sophisticated use cases such
+            as social recovery.
+        </p>
+    </section>
+
+    <section>
+        <h3>Steps</h3>
+
+        <p>
+            The process is very similar to that of the 2-of-3 guide. This
+            document only outlines the parts that differ.
+        </p>
+
+        <dd>1. Decide how many shares are needed:</dd>
+        <dt>
+            This is the "M" in "2-of-M". The maximum number of shares is 26.
+            Shares A, B and C are on the first sheet. Label each consecutive
+            share using letters in alphabetical order starting from D. On each
+            share, write the "2-of-__" part with the total number of shares (M).
+        </dt>
+
+        <dd>2. Choose a group identifier:</dd>
+        <dt>
+            This is the same as the 2-of-3-guide. (e.g.:
+            <em>"Brand Model MM/DD"</em>)
+        </dt>
+
+        <dd>3. Write the seed phrase:</dd>
+        <dt>Identical to the 2-of-3 guide.</dt>
+
+        <dd>4. Generate the random share A:</dd>
+        <dt>Identical to the 2-of-3 guide.</dt>
+
+        <dd>5. Generate the checksums for the seed phrase and share A:</dd>
+        <dt>Identical to the 2-of-3 guide.</dt>
+
+        <dd>6. Derive as many shares as needed:</dd>
+        <dt>
+            This follows the same process as explained in the 2-of-3 guide,
+            except one needs to continue to derive more shares after "Share C".
+            This process is explained in
+            <em>"A) Deriving Shares"</em> shown below.
+        </dt>
+
+        <dd>7. Verify the derived checksums:</dd>
+        <dt>
+            Verify all of the shares' checksums as explained in the 2-of-3
+            guide, except for share A.
+        </dt>
+
+        <dd>8. Recover the first seed word:</dd>
+        <dt>
+            For first time users, recover the first seed word from the two last
+            shares. The recovery process is explained below in
+            <em>"B) Recovering the Seed Phrase"</em>.
+        </dt>
+    </section>
+
+    <section>
+        <h3>A) Deriving Shares</h3>
+        <ol>
+            <li>
+                Place the pointer on the first character of the seed phrase.
+            </li>
+            <li>On the outer row, look for the first character of share A.</li>
+            <li>
+                Write the corresponding inner-row character as the first
+                character of share B.
+            </li>
+            <li>
+                Without moving the wheel, now look for that share B character on
+                the outer row.
+            </li>
+            <li>
+                Write the corresponding inner-row character as the first
+                character of share C.
+            </li>
+            <li>
+                Similarly, look for that share C character on the outer row to
+                find share D character. Keep going until the first character of
+                each share has been found.
+            </li>
+            <li>
+                Repeat steps 1 to 6 using the second character of the seed
+                phrase, and so on until both white and gray fields are completed
+                for all shares.
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>B) Recovering the Seed Phrase</h3>
+        <p>
+            This follows the same process as explained in the 2-of-3 guide,
+            except that the outer share, the inner share and the solving window
+            have to be determined using the 2-of-M wheel:
+        </p>
+        <ol>
+            <li>Pick two shares of the same group.</li>
+            <li>
+                Start with the share with the lower alphabetically ordered
+                index. This is likely to be the outer share.
+            </li>
+            <li>Look for that share's index on the outer row.</li>
+            <li>Look for the other share's index on the inner row.</li>
+            <li>Turn the wheel so that both letters align.</li>
+            <li>
+                Look at the window under the "Recovery" label. If it shows a
+                number, then it is the solving window.
+            </li>
+            <li>
+                If it does not show a number, go back to step 2 but start with
+                the other share.
+            </li>
+        </ol>
+        <p>
+            Now that the outer share, the inner share and the solving window
+            have been determined, proceed as explained in the 2-of-3 guide.
+        </p>
+        <aside>
+            <em>Example:</em> Recovering from the shares N and S. Align "N" on
+            the outer row with "S" on the inner row. The "Recovery" window shows
+            ⑤. Then, follow the recovery process using N as the outer share, S
+            as the inner share and ⑤ as the solving window.
+        </aside>
+    </section>
+</section>

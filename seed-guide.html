@@ -1,0 +1,188 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Generate Seed / Guide</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/penlock-bip39.js"
+    import "./sdk/table/binary-table.js"
+</script>
+
+<style>
+    .sheet.column {
+        gap: 1em;
+    }
+
+    .sheet.column > section {
+        break-inside: auto;
+        width: 100%;
+    }
+
+    .sheet.column h3 {
+        text-align: left;
+    }
+
+    binary-table {
+        margin: 1em 2.6em;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print on normal printer paper.</li>
+        <li>Use the printed document when working with sensitive data.</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <h2>Generate a Seed Phrase / Guide</h2>
+
+    <section>
+        <h3>Why?</h3>
+        <p>
+            It is almost impossible to produce private, provably secure
+            randomness with an electronic device. A seed phrase produced out of
+            unsound randomness is insecure, and a flaw in the random number
+            generation, either intentional or accidental, can take years to
+            discover. By generating the seed phrase by hand, we eliminate any
+            doubts about its security.
+        </p>
+    </section>
+
+    <section>
+        <h3>Components</h3>
+
+        <dd>Worksheet</dd>
+        <dt>
+            The worksheet has 2 sections: the <em>Binary sequence</em>, and the
+            <em>Seed Phrase</em>. The binary sequence, comprising of `X` and
+            `O`, is generated first. It is then converted into the seed phrase
+            that is the proper wallet backup.
+        </dt>
+
+        <dd>Wordlist</dd>
+        <dt>
+            A list of all seed words as well as their binary value for
+            conversion.
+        </dt>
+
+        <dd>Tiles</dd>
+        <dt>
+            The tiles are for generating a random binary sequence. There must be
+            2 tiles for each of the 29 characters, as well as as 2 tiles for
+            each of the 3 pictograms, for a total of 64 tiles.
+        </dt>
+    </section>
+
+    <section>
+        <h3>Steps Overview</h3>
+        <ol>
+            <li>Generate a random binary sequence using the tiles.</li>
+            <li>
+                Convert the binary sequence into seed words using the wordlist.
+            </li>
+            <li>
+                Find the last word while entering the seed phrase into a wallet
+                by trying the 16 possible values for it.
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Doing This Well</h3>
+        <ul>
+            <li>Complete this activity in a private space.</li>
+            <li>Be careful to avoid pronouncing results or words out loud.</li>
+            <li>Keep cameras and prying eyes away.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Generating the Random Binary Sequence</h3>
+
+        <p>
+            Tiles are a fast and reliable way to generate randomness
+            <em>if they are well-shuffled</em>. The wash shuffle is similar to
+            how children shuffle, i.e. by spreading the cards with both hands
+            and mixing them arbitrarily. This is considered one of the most
+            efficient ways to shuffle, and will ensure the security of the seed
+            phrase. Note that this way of shuffling works best on a fabric
+            surface.
+        </p>
+
+        <ol>
+            <li>Wash-shuffle the tiles thoroughly.</li>
+            <li>Pick up a tile randomly.</li>
+            <li>
+                In the table below, find the binary value corresponding to the
+                character on the tile.
+            </li>
+            <li>
+                Copy this value into the "Binary Sequence" section of the
+                worksheet. Boxes color doesn't matter for this step.
+            </li>
+            <li>
+                Go back to step 1 until the sequence is complete, except for the
+                4 final boxes marked with "?". Note that for the last tile, only
+                the first 3 binary characters need to be copied.
+            </li>
+        </ol>
+
+        <binary-table></binary-table>
+    </section>
+
+    <section>
+        <h3>Converting the Binary Sequence into Seed Words</h3>
+        <ol>
+            <li>Take the wordlist.</li>
+            <li>
+                Convert each row of the binary sequence into its corresponding
+                seed word, and write these words in the corresponding rows of
+                the "Seed Phrase" section.
+            </li>
+            <li>
+                For the last word, look for the section of the wordlist that has
+                its 16 words starting with the same sequence as the last binary
+                row.
+            </li>
+            <li>Take the wallet that will use the seed phrase.</li>
+            <li>
+                On the wallet, initialize the recovery process and enter the
+                first 11 seed words.
+            </li>
+            <li>
+                Then, try each of the 16 possible words starting with the right
+                binary sequence. Only one will be valid - this is the 12th word.
+            </li>
+            <li>Write down the 12th word on the worksheet.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Storing the Seed Phrase</h3>
+        <p>
+            Cut and store the "Seed Phrase" section in a secure location; If
+            required this can function as a backup to restore the wallet. It is
+            advised to keep this piece of paper into a protecting container,
+            such as a stainless steel pill bottle.
+        </p>
+        <p>
+            Please note that you risk loosing your funds if the seed phrase is
+            lost or stolen. For a safer and more resilient backup strategy, see
+            the guide <em>Split a Seed Phrase (2-of-3)</em>.
+        </p>
+
+        <p>
+            The "Binary Sequence" is no longer needed and must be disposed of
+            securely, as it can also be used to take control of the wallet. The
+            recommended way of doing so is to cut and burn that part completely.
+        </p>
+    </section>
+</section>

@@ -1,0 +1,329 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Penlock.io</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<style>
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .card header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card header aside {
+        max-width: 60%;
+    }
+
+    .card section {
+        width: 50%;
+    }
+
+    .card nav {
+        display: inline-block;
+    }
+
+    .secondary {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .card {
+            margin-top: 0;
+            width: calc((var(--paper-width) - var(--paper-margin)) / 2);
+
+            section {
+                width: 100%;
+            }
+        }
+    }
+</style>
+
+<section class="post-it">
+    <h3>Hello, Peer!</h3>
+    <p>
+        Penlock is an open-source, cryptographically secure, printable
+        paper-computer. It guides users through secret-splitting their BIP39
+        seed phrase without an electronic device.
+    </p>
+    <p>
+        This is a beta release, exclusively intended for peer-reviewing and
+        early testing. The public release is planned for Q3 2024 and it is
+        likely,
+        <em>but not guaranteed</em>, to be backward-compatible with the present
+        documents. If we break compatibility, this beta-version will still be
+        available at the current address (beta.penlock.io).
+    </p>
+    <p>Please note that the following pieces are still missing:</p>
+    <ul>
+        <li>Professional UI/UX</li>
+        <li>Illustrated examples</li>
+        <li>The password generation guide</li>
+        <li>"Universal" browser compatibility</li>
+    </ul>
+    <p>
+        <em>Compatibility:</em> Penlock displays & prints well in Chromium-based
+        browsers (Chromium, Brave, Opera, Vivaldi, Edge, ...). There seems to be
+        issues with Firefox, and Safari hasn't been tested yet.
+    </p>
+</section>
+
+<h2>Main Features</h2>
+
+<section class="card">
+    <header>
+        <h3>Generate a Seed Phrase</h3>
+        <aside>(Difficulty: *)</aside>
+    </header>
+    <section>
+        <p>
+            Generate a 12-word seed phrase using real-world, provable
+            randomness.
+        </p>
+        <aside>Time required: ~30mins</aside>
+    </section>
+    <section>
+        <h4>What you'll need:</h4>
+        <ul>
+            <li>
+                <a target="_blank" href="./seed-guide.html"
+                    >The Seed Phrase Guide</a
+                >
+            </li>
+            <li>
+                <a target="_blank" href="./seed-worksheet.html"
+                    >The Seed Phrase Worksheet</a
+                >
+            </li>
+            <li>
+                <a target="_blank" href="./seed-wordlist.html"
+                    >The Seed Phrase Wordlist</a
+                >
+            </li>
+            <li><a target="_blank" href="./tiles.html">Penlock Tiles</a></li>
+        </ul>
+        <aside>+Wallet +Printer +Scissors +Pencil +Eraser</aside>
+    </section>
+</section>
+
+<section class="card">
+    <header>
+        <h3>Split a Seed Phrase (2-of-3)</h3>
+        <aside>(Difficulty: **)</aside>
+    </header>
+    <section>
+        <p>
+            Split a seed phrase into 3 cryptographically secure "shares"; any 2
+            of these can be used to recover the seed phrase. This is the
+            recommended backup strategy.
+        </p>
+        <aside>
+            <span>Time required:</span>
+            <ul>
+                <li>12 words: ~2h</li>
+                <li>24 words: ~3h</li>
+            </ul>
+        </aside>
+    </section>
+    <section>
+        <h4>What you'll need:</h4>
+        <ul>
+            <li>
+                <a target="_blank" href="./2of3-guide.html">The 2-of-3 Guide</a>
+            </li>
+            <li>
+                The 2-of-3 Worksheet:
+                <nav>
+                    <a target="_blank" href="./2of3-worksheet.html?words=12"
+                        >12-word</a
+                    >
+                    <a target="_blank" href="./2of3-worksheet2.html?words=18"
+                        >18-word</a
+                    >
+                    <a target="_blank" href="./2of3-worksheet2.html?words=24"
+                        >24-word</a
+                    >
+                </nav>
+            </li>
+            <li>
+                <a target="_blank" href="./2ofm-wheel.html">The 2-of-M Wheel</a>
+            </li>
+            <li><a target="_blank" href="./tiles.html">Penlock Tiles</a></li>
+        </ul>
+        <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
+    </section>
+</section>
+
+<header>
+    <h2>Advanced Features</h2>
+</header>
+
+<div class="secondary">
+    <section class="card">
+        <header>
+            <h3>Split a Seed Phrase (2-of-M)</h3>
+            <aside>(**)</aside>
+        </header>
+        <section>
+            <p>
+                Split a seed phrase into M cryptographically secure "shares";
+                any 2 of these can be used to recover the seed phrase. Prior
+                experience of the 2-of-3 guide is required.
+            </p>
+        </section>
+        <aside>Time required: ~3h</aside>
+        <section>
+            <h4>What you'll need:</h4>
+            <ul>
+                <li>
+                    <a target="_blank" href="./2ofm-guide.html"
+                        >The 2-of-M Guide</a
+                    >
+                </li>
+                <li>
+                    The 2-of-M Worksheets:
+                    <nav>
+                        <a target="_blank" href="./2ofm-worksheet.html?words=12"
+                            >12-word</a
+                        >
+                        <a
+                            target="_blank"
+                            href="./2ofm-worksheet2.html?words=18"
+                            >18-word</a
+                        >
+                        <a
+                            target="_blank"
+                            href="./2ofm-worksheet2.html?words=24"
+                            >24-word</a
+                        >
+                    </nav>
+                </li>
+                <li>
+                    <a target="_blank" href="./2ofm-wheel.html"
+                        >The 2-of-M Wheel</a
+                    >
+                </li>
+                <li>
+                    <a target="_blank" href="./tiles.html">Penlock Tiles</a>
+                </li>
+            </ul>
+            <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
+        </section>
+    </section>
+
+    <section class="card">
+        <header>
+            <h3>Split a Seed Phrase (K-of-M)</h3>
+            <aside>(***)</aside>
+        </header>
+        <section>
+            <p>
+                Split a seed phrase into M cryptographically secure "shares";
+                any K of these can be used to recover the seed phrase. Prior
+                experience of the 2-of-3 guide is required.
+            </p>
+            <aside>Time required: ~4h</aside>
+        </section>
+        <section>
+            <h4>What you'll need:</h4>
+            <ul>
+                <li>
+                    <a target="_blank" href="./kofm-guide.html"
+                        >The K-of-M Guide</a
+                    >
+                </li>
+                <li>
+                    <a target="_blank" href="./kofm-tables.html"
+                        >The K-of-M Derivation Tables</a
+                    >
+                </li>
+                <li>
+                    A K-of-M Worksheet:
+                    <br />
+                    3-of-M:
+                    <nav>
+                        <a target="_blank" href="./3ofm-worksheet.html?words=12"
+                            >12-word</a
+                        >
+                        <a target="_blank" href="./3ofm-worksheet.html?words=18"
+                            >18-word</a
+                        >
+                        <a target="_blank" href="./3ofm-worksheet.html?words=24"
+                            >24-word</a
+                        >
+                    </nav>
+                    <br />
+                    4-of-M:
+                    <nav>
+                        <a target="_blank" href="./4ofm-worksheet.html?words=12"
+                            >12-word</a
+                        >
+                        <a target="_blank" href="./4ofm-worksheet.html?words=18"
+                            >18-word</a
+                        >
+                    </nav>
+                    <br />
+                    5-of-M:
+                    <nav>
+                        <a target="_blank" href="./5ofm-worksheet.html?words=12"
+                            >12-word</a
+                        >
+                    </nav>
+                </li>
+                <li>
+                    <a target="_blank" href="./kofm-wheels.html"
+                        >The K-of-M Wheels</a
+                    >
+                </li>
+                <li>
+                    <a target="_blank" href="./2ofm-wheel.html"
+                        >The 2-of-M Wheel</a
+                    >
+                </li>
+                <li>
+                    <a target="_blank" href="./tiles.html">Penlock Tiles</a>
+                </li>
+            </ul>
+            <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
+        </section>
+    </section>
+</div>
+
+<h2>Other</h2>
+
+<section class="card">
+    <header>
+        <h3>Community</h3>
+    </header>
+    <section>
+        <p>
+            Help us to build a supportive community! Feedback, contributions,
+            and questions are always welcome. :)
+        </p>
+    </section>
+    <ul>
+        <li>
+            <a href="https://matrix.to/#/#penlock:matrix.org" target="_blank"
+                >Chat on Matrix</a
+            >
+        </li>
+        <li>
+            <a
+                href="https://github.com/penlock-io/beta.penlock.io"
+                target="_blank"
+                >Contribute on Github</a
+            >
+        </li>
+    </ul>
+</section>

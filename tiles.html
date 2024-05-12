@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tiles</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/penlock-bip39.js"
+    import "./sdk/table/tiles-table.js"
+</script>
+
+<style>
+    .column {
+        justify-content: center;
+    }
+    tiles-table {
+        width: 100%;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>
+            Print this document double-sided, preferably on thick paper, such as
+            photo paper.
+        </li>
+        <li>
+            Carefully cut the tiles along the black lines, so that the tiles are
+            equally sized.
+        </li>
+        <li>Check that the tiles have the same character on both sides.</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <tiles-table borders="true"></tiles-table>
+</section>
+
+<section class="sheet column">
+    <tiles-table></tiles-table>
+</section>

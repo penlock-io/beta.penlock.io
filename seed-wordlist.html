@@ -1,0 +1,29 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Generate Seed / Wordlist</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/penlock-bip39.js"
+    import "./sdk/table/wordlist-sheets.js"
+</script>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print one-sided on normal printer paper.</li>
+        <li>
+            <em>
+                Always use the printed document when looking for seed words.
+            </em>
+        </li>
+    </ul>
+</section>
+
+<wordlist-sheets></wordlist-sheets>

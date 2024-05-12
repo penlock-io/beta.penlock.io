@@ -1,0 +1,6 @@
+node_modules/*
+
+# Statically link dependencies (for future automated IPFS publication)
+!node_modules/normalize.css
+!node_modules/@frameable
+!node_modules/@svgdotjs

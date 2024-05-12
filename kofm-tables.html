@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>K-of-M Split / Tables</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/penlock-bip39.js"
+    import "./sdk/table/derivation-table.js"
+</script>
+
+<style>
+    h4 {
+        text-align: center;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print on normal printer paper.</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <h3>Split a Seed Phrase (K-of-M) / Derivation Tables</h3>
+    <section>
+        <h4>3-of-M</h4>
+        <derivation-table k="3" m="26"></derivation-table>
+    </section>
+    <section>
+        <h4>4-of-M</h4>
+        <derivation-table k="4" m="26"></derivation-table>
+    </section>
+    <section>
+        <h4>5-of-M</h4>
+        <derivation-table k="5" m="26"></derivation-table>
+    </section>
+    <footer></footer>
+</section>

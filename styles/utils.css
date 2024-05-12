@@ -1,0 +1,37 @@
+/* Utils */
+
+.right {
+    float: right;
+}
+
+/* .sheet.column { */
+/*     height: 100%; */
+/* } */
+/* .sheet.column > * { */
+/*     width: 100%; */
+/* } */
+
+.column {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+        text-align: center;
+    }
+}
+
+.row {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* TODO: check that everything works */
+:not(.sheet).column,
+:not(.sheet).row {
+    width: 100%;
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>2-of-M Split / Worksheet</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/worksheet/share-section.js"
+</script>
+
+<style>
+    section.sheet {
+        flex-direction: row-reverse;
+    }
+
+    section.sheet > h3 {
+        writing-mode: vertical-rl;
+    }
+
+    section.column {
+        justify-content: space-evenly;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print one-sided on normal printer paper.</li>
+        <li>Print one copy of both "Base Worksheet".</li>
+        <li>
+            Print one or several copies of the "Additional Worksheet", depending
+            on how many shares are needed.
+        </li>
+    </ul>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (2-of-M) / Base Worksheet 1</h3>
+
+    <section class="column">
+        <share-section
+            header="Secret"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Share A"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (2-of-M) / Base Worksheet 2</h3>
+
+    <section class="column">
+        <share-section
+            header="Share B"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+        <share-section
+            header="Share C"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (2-of-M) / Additional Worksheet</h3>
+
+    <section class="column">
+        <share-section
+            header="Share __"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+        <share-section
+            header="Share __"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+        <share-section
+            header="Share __"
+            scheme="2-of-__"
+            prompt="Group:"
+        ></share-section>
+    </section>
+</section>

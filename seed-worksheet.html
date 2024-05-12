@@ -1,0 +1,73 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Generate Seed / Worksheet</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/worksheet/binary-input.js"
+    import "./sdk/worksheet/bip39-input.js"
+</script>
+
+<style>
+    .sheet h4 {
+        text-align: center;
+    }
+
+    aside {
+        text-align: center;
+        margin: 1em;
+    }
+
+    footer {
+        font-style: italic;
+        text-align: center;
+    }
+
+    .cutme {
+        border: 1px dashed black;
+        border-radius: 0.4em;
+        padding: 0.5em;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print one-sided on normal printer paper</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <header>
+        <h3>Generate a Seed Phrase / Worksheet</h3>
+    </header>
+
+    <section class="row">
+        <section>
+            <section class="cutme">
+                <h4>Binary Sequence</h4>
+                <binary-input></binary-input>
+            </section>
+            <aside>Cut & <em>burn</em> once done</aside>
+        </section>
+
+        <section>
+            <section class="cutme">
+                <h4>Seed Phrase</h4>
+                <bip39-input></bip39-input>
+            </section>
+            <aside>Cut & <em>store</em> once done</aside>
+        </section>
+    </section>
+
+    <footer>
+        The data on this sheet grants full control over the wallet funds and
+        must be handled with care. Keep it away from cameras and prying eyes.
+    </footer>
+</section>

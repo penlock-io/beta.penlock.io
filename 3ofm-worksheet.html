@@ -1,0 +1,147 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>K-of-M Split / Worksheet</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/worksheet/share-input.js"
+    import "./sdk/worksheet/share-section.js"
+</script>
+
+<style>
+    section.sheet {
+        flex-direction: row-reverse;
+    }
+
+    section.sheet > h3 {
+        writing-mode: vertical-rl;
+    }
+
+    section.column {
+        justify-content: space-evenly;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print one-sided on normal printer paper.</li>
+    </ul>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Random Shares</h3>
+
+    <section class="column">
+        <share-section
+            header="Secret"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section header="Share A" scheme="3-of-__"></share-section>
+        <share-section header="Share B" scheme="3-of-__"></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Derived Shares</h3>
+
+    <section class="column">
+        <share-section header="Share __" scheme="3-of-__"></share-section>
+        <share-section header="Share __" scheme="3-of-__"></share-section>
+        <share-section header="Share __" scheme="3-of-__"></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Tweaking (derivation)</h3>
+
+    <section class="column">
+        <share-section
+            header="Tweaked Secret"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share A"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share B"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Tweaking (derivation)</h3>
+
+    <section class="column">
+        <share-section
+            header="Tweaked Secret"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share A"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share B"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Tweaking (derivation)</h3>
+
+    <section class="column">
+        <share-section
+            header="Tweaked Secret"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share A"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share B"
+            prompt="Factor: ___"
+            footer="Cut & burn once done"
+        ></share-section>
+    </section>
+</section>
+
+<section class="sheet landscape row">
+    <h3>Split a Seed Phrase (3-of-M) / Worksheet / Tweaking (recovery)</h3>
+
+    <section class="column">
+        <share-section
+            header="Tweaked Share __"
+            prompt="Factors: ___ + ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share __"
+            prompt="Factors: ___ + ___"
+            footer="Cut & burn once done"
+        ></share-section>
+        <share-section
+            header="Tweaked Share __"
+            prompt="Factors: ___ + ___"
+            footer="Cut & burn once done"
+        ></share-section>
+    </section>
+</section>

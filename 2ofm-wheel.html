@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>2-of-M Wheel</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/penlock-bip39.js"
+    import "./sdk/wheel/wheel-sheet.js"
+</script>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print on thick paper, such as photo paper.</li>
+    </ul>
+    <h4>Assembly:</h4>
+    <ol>
+        <li>Cut out each disk.</li>
+        <li>
+            For 2-of-3 splitting (recommended), cut out the 3 white windows on
+            the colored disk.
+        </li>
+        <li>For 2-of-M splitting, cut out all of the numbered windows.</li>
+        <li>
+            On both disks, cut two slits along the lines of the central cross.
+        </li>
+        <li>
+            Attach the disks together using a split pin through the central
+            cross. (The colored disk goes on top.)
+        </li>
+    </ol>
+</section>
+
+<wheel-sheet name="2-of-M" background="./assets/derive.png"></wheel-sheet>

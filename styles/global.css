@@ -1,0 +1,69 @@
+/* Layout */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    --monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+        Consolas, "DejaVu Sans Mono", monospace;
+}
+
+aside {
+    font-style: italic;
+}
+
+aside em {
+    text-decoration: underline;
+}
+
+dd {
+    font-weight: bold;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+/* Block */
+
+:is(h1, h2) {
+    text-align: center;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+    margin: 1em;
+}
+
+ul {
+    list-style-type: "− ";
+}
+
+ul,
+ol {
+}
+/* ul { */
+/*     padding: 0; */
+/* } */
+/**/
+/* ul li { */
+/*     list-style: none; */
+/*     margin-top: 0.4em; */
+/**/
+/*     &:before { */
+/*         content: "−"; */
+/*         padding-right: 0.2em; */
+/*     } */
+/* } */
+
+/* Inline */
+
+svg {
+    margin: auto;
+
+    font-family: "Nimbus Mono PS", "Courier New", monospace;
+
+    text {
+        text-anchor: middle;
+        alignment-baseline: central;
+    }
+}

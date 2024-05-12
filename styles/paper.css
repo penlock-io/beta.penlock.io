@@ -1,0 +1,147 @@
+/* # DESIGN
+ *
+ * This style sheet is intended to provide to provide a fair in-browser display of content that is meant to be printed. However, due to technical limitation, this is not _exactly_ identical.
+ *
+ * A `.sheet` block has _at least_ the size of an A4 sheet, but might actually have an higher height to fit the content. On paper, it will use one or several pages, and leave the end of the last page blank.
+ *
+ * A `.sheet .landscape` display its content as a landscape page, and its size is fixed. (overflows are ignored)
+ */
+
+/* Configuration */
+
+:root {
+    --page-margin: 6.35;
+    /* FIXME: should be 4.2333; Something's wrong somewhere */
+    --font-ratio: calc(210 / 4.2466);
+
+    --margin-ratio: calc(var(--page-margin) / (210 - var(--page-margin)));
+    --height-ratio: calc(
+        (297 - 2 * var(--page-margin)) / (210 - 2 * var(--page-margin))
+    );
+}
+
+/* Always */
+
+body {
+    max-width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.sheet {
+    /* position: relative; */
+    overflow: hidden;
+    margin: 0;
+}
+
+.landscape {
+    transform: rotate(-90deg) translate(-100%);
+    transform-origin: top left;
+}
+
+/* On Screen */
+
+@media screen {
+    :root {
+        /* FIXME: should not be 97.7vw, something's wrong somewhere */
+        --paper-width: min(97.7vw, 1em * var(--font-ratio));
+        --paper-height: calc(var(--paper-width) * var(--height-ratio));
+        --paper-border: calc(var(--paper-width) * var(--margin-ratio));
+
+        --paper-margin: var(--paper-border);
+    }
+
+    body {
+        background: linear-gradient(#efefef, #e0e0e0);
+        /* TODO: a saner way to centrer pages */
+        padding: 0 calc((100% - var(--paper-width)) / 2);
+    }
+
+    .strict,
+    .landscape {
+        font-size: calc(var(--paper-width) / var(--font-ratio));
+    }
+
+    .sheet,
+    .card,
+    .post-it {
+        width: var(--paper-width);
+        margin: var(--paper-margin) 0;
+        border: solid var(--paper-border) white;
+        border-radius: 0.1em;
+
+        background: white;
+        /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); */
+        box-shadow:
+            0 3px 4px 0 rgba(0, 0, 0, 0.14),
+            0 1px 8px 0 rgba(0, 0, 0, 0.12),
+            0 3px 3px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .sheet {
+        min-height: var(--paper-height);
+    }
+
+    .landscape {
+        width: var(--paper-height);
+        max-width: var(--paper-height);
+        min-height: var(--paper-width);
+        max-height: var(--paper-width);
+
+        margin: 0;
+        margin-bottom: calc(
+            var(--paper-height) - var(--paper-width) + var(--paper-margin)
+        );
+    }
+
+    .post-it,
+    .warning {
+        background: #ffeda5;
+        border-color: #ffeda5;
+        border-width: calc(var(--paper-border) / 4) var(--paper-border);
+    }
+}
+
+/* On Paper */
+
+@media print {
+    :root {
+        --paper-height: calc(297mm - 2mm * var(--page-margin));
+        --paper-width: calc(210mm - 2mm * var(--page-margin));
+    }
+
+    @page {
+        margin: calc(1mm * var(--page-margin)) !important;
+    }
+
+    .sheet {
+        width: var(--paper-width);
+        min-height: calc(var(--paper-height) - 1mm);
+
+        break-inside: avoid;
+        page-break-after: always;
+
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    .landscape {
+        width: var(--paper-height);
+        max-width: var(--paper-height);
+        min-height: calc(var(--paper-width) - 1mm);
+        max-height: calc(var(--paper-width) - 1mm);
+    }
+
+    .noprint,
+    .noprint *,
+    .post-it {
+        display: none !important;
+    }
+
+    section,
+    table,
+    img,
+    svg {
+        break-inside: avoid;
+    }
+}

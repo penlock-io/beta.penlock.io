@@ -1,0 +1,352 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>K-of-M Split / Guide</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+</script>
+
+<style>
+    .sheet.column {
+        gap: 1em;
+    }
+
+    .sheet.column > section {
+        break-inside: auto;
+    }
+
+    .sheet.column h3 {
+        text-align: left;
+    }
+
+    dd {
+        margin-top: 1.6em;
+    }
+</style>
+
+<section class="post-it">
+    <h4>Recommendations:</h4>
+    <ul>
+        <li>Print on normal printer paper.</li>
+        <li>Use the printed document when working with sensitive data.</li>
+    </ul>
+</section>
+
+<section class="sheet column">
+    <h2>Split a Seed Phrase (K-of-M) / Guide</h2>
+
+    <aside>
+        <em>Note:</em> Prior experience of the 2-of-3 guide is required.
+    </aside>
+
+    <section>
+        <h3>Why?</h3>
+        <p>
+            While a 2-of-3 split is a good enough backup strategy, the K-of-M
+            generalization is sometimes needed for sophisticated use cases such
+            as social recovery.
+        </p>
+        <p>
+            It is worth noting that the K-of-M split uses a different algorithm,
+            known as Shamir Secret Sharing Scheme. Compared to the 2-of-3 split,
+            this method takes exponentially longer to perform as K (the number
+            of shares needed for recovery) and M (the total number of shares)
+            grows. However, the recovery time increases linearly.
+        </p>
+    </section>
+
+    <section>
+        <h3>Components</h3>
+
+        <section>
+            <dd>Worksheets</dd>
+            <dt>
+                The shares look the same as for the 2-of-3 split, but there are
+                now more of them. The concepts of "random shares" and "derived
+                shares" are similar, however an intermediary step knows as
+                "tweaked share" is now introduced. There are two types of
+                tweaking worksheets that should not be confused with one
+                another. The first are "Tweaking (derivation)" sheets that are
+                used to devire shares. The second is the "Tweaking (recovery)"
+                sheet, used for recovering the seed phrase.
+            </dt>
+        </section>
+
+        <section>
+            <dd>Wheels</dd>
+            <dt>
+                Two new wheels are needed in addition to the of the 2-of-M
+                wheel. The larger K-of-M wheel is for tweaking shares, and the
+                smaller one is used for recovery.
+            </dt>
+        </section>
+
+        <section>
+            <dd>Derivation Tables</dd>
+            <dt>
+                These tables show the tweaking factors for deriving shares. More
+                details will follow on this later.
+            </dt>
+        </section>
+
+        <section>
+            <dd>Tiles</dd>
+            <dt>These are the same as in the 2-of-3 guide.</dt>
+        </section>
+    </section>
+
+    <section>
+        <h3>Steps</h3>
+
+        <section>
+            <dd>1. Fill the shares' headers</dd>
+            <dt>
+                Begin with writing the group identifier on each random and
+                derived share (typically:
+                <em>"Brand Model MM/DD"</em>). Complete the scheme parameters
+                (e.g.: 3-of-5). Then, name the derived shares following
+                alphabetic order up to Z (C/D/E for 3-of-5). There cannot be
+                more than 26 shares in total.
+            </dt>
+        </section>
+
+        <section>
+            <dd>2. Write the seed phrase</dd>
+            <dt>
+                Fill the "Secret" section's gray fields with the seed phrase,
+                respecting the word's numbering.
+            </dt>
+        </section>
+
+        <section>
+            <dd>3. Generate the random shares</dd>
+            <dt>
+                Generate the random shares as explained in the 2-of-3 split
+                guide. The number of random shares depends on the recovery
+                threshold (the "K" in "K-of-M", minus one).
+            </dt>
+        </section>
+
+        <section>
+            <dd>4. Checksum the secret and the random shares</dd>
+            <dt>
+                Using the 2-of-M wheel, generate the checksums for the seed
+                phrase and the random shares as explained in the 2-of-3 split
+                guide.
+            </dt>
+        </section>
+
+        <section>
+            <dd>5. Generate the derived shares</dd>
+            <dt>
+                Derive as many additional shares as needed to reach a total of
+                "M" random + derived shares. This will be done in two phases -
+                firstly, follow the section titled
+                <em>A1) Tweaking Shares for Derivation</em>, and then the
+                section titled <em>A3) Deriving from Tweaked Shares</em>. Both
+                processes are detailed below.
+            </dt>
+        </section>
+
+        <section>
+            <dd>6. Verify the derived shares</dd>
+            <dt>
+                Using the 2-of-M wheel, verify the checksum of each of the
+                derived share (this operation was explained in the 2-of-3 split
+                guide). To fix erroneous characters, repeat the various steps
+                starting with the checksums on the random shares, then the
+                tweaking and finally the derivation.
+            </dt>
+        </section>
+
+        <section>
+            <dd>7. Recover the first seed phrase word</dd>
+            <dt>
+                If you are using this guide for the first time, verify that you
+                completed each step correctly by recovering the first seed word
+                from the <em>derived</em> shares as explained in
+                <em>B1) Recovering the Seed Phrase</em> below. This will also
+                prove the soundness of the method.
+            </dt>
+        </section>
+    </section>
+
+    <section>
+        <h3>A1) Tweaking Shares for Derivation</h3>
+        <ol>
+            <li>Take the "Derivation Tables" sheet.</li>
+            <li>Look for the correct table for your K-of-M.</li>
+            <li>Look for the index (letter) of the share being derived.</li>
+            <li>Take one of the "Tweaking (derivation)" worksheets.</li>
+            <li>
+                For each share on the tweaking worksheet, write the "Factor:"
+                indicated in the derivation table.
+            </li>
+            <li>
+                Tweak each share as indicated in
+                <em>A2) Tweaking a Share</em> below.
+            </li>
+        </ol>
+    </section>
+
+    <aside>
+        <em>Example:</em> Tweaking shares to derive the share C, in a 3-of-5
+        scheme. Look for the C column in the 3-of-M derivation table. The
+        tweaking factor for "Secret" is 23, for "Share A" is 15, and for "Share
+        B" is 26.
+    </aside>
+
+    <section>
+        <h3>A2) Tweaking a Share</h3>
+        <p>
+            Tweaking a share consist of replacing its characters by the
+            corresponding tweaked characters:
+        </p>
+        <ol>
+            <li>Take the big K-of-M wheel.</li>
+            <li>
+                Place the pointer over the desired factor. The wheel displays
+                the character mapping for that tweaking factor.
+            </li>
+            <li>
+                For each character of the share, write the corresponding tweaked
+                character at the corresponding position on the tweaked share.
+            </li>
+        </ol>
+
+        <aside>
+            <em>Example:</em> Tweaking the word "COIN" by 18 will give "VDMT".
+            First place the wheel pointer on 18, then look for the character
+            "C", which will become a "V". Similarly, "O" leads to "D", "I" leads
+            to "M" and "N" leads to "T".
+        </aside>
+    </section>
+
+    <section>
+        <h3>A3) Deriving from Tweaked Shares</h3>
+        <ol>
+            <li>Take the 2-of-M wheel.</li>
+            <li>
+                Place the pointer on the first character of the first tweaked
+                share.
+            </li>
+            <li>
+                On the inner row, find the first character of the second tweaked
+                share.
+            </li>
+            <li>Move the pointer to the corresponding outer-row character.</li>
+            <li>
+                Repeat from step 3 with the first character of the remaining
+                tweaked shares.
+            </li>
+            <li>
+                Write the character under the pointer as the first character of
+                the derived share.
+            </li>
+            <li>
+                Repeat from step 1 with the second character of the first
+                tweaked share, and keep going until derivation is complete.
+            </li>
+        </ol>
+
+        <aside>
+            <em>Example:</em> Deriving from tweaked words "VDMT", "ABCD" and
+            "WXYZ". Begin by deriving the first character. Place the pointer on
+            "V", then look for "A" on the inner row. The corresponding outer-row
+            character is "X". Move the pointer to "X". Look for "W" on the inner
+            row. The corresponding outer-row character is "S". This is the first
+            derived character. Repeat the process with the next characters to
+            find the derived word "SCNW"
+        </aside>
+    </section>
+
+    <section>
+        <h3>B1) Recoving the Seed Phrase</h3>
+        <p>
+            Recovery can be achieved by deriving the secret (seed phrase +
+            checksum) from the gathered shares. The tweaking factors have to be
+            determined using both K-of-M wheels as explained later.
+        </p>
+        <ol>
+            <li>Gather K shares of the same group.</li>
+            <li>
+                Tweak these shares as indicated in
+                <em>B2) Tweaking Shares for Recovery</em> just below.
+            </li>
+            <li>
+                Take a blank "Random Shares" worksheet where to write the
+                secret.
+            </li>
+            <li>
+                Derive the secret from the tweaked shares, as indicated in
+                <em>A3) Deriving from Tweaked Shares</em>.
+            </li>
+            <li>
+                Verify the seed phrase's checksum as explained in the 2-of-3
+                guide. If erroneous characters are found, correct them by
+                repeating the recovery steps for these characters only.
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>B2) Tweaking Shares for Recovery</h3>
+        <ol>
+            <li>Take the "Tweaking (recovery)" worksheet.</li>
+            <li>
+                Write the index of each share to tweak on the worksheet (in any
+                order).
+            </li>
+            <li>Take the small K-of-M wheel.</li>
+            <li>
+                Place the pointer over the index of the first share to tweak.
+            </li>
+            <li>
+                Look for the indexes of each of the <em>other</em> shares to
+                tweak on the outer row.
+            </li>
+            <li>
+                The corresponding values as the tweaking factors for the share
+                under the pointer. We are now going to sum these factors.
+            </li>
+            <li>Take the big K-of-M wheel.</li>
+            <li>Place the pointer on the first tweaking factor.</li>
+            <li>
+                Under the outer row, look for the label that adds the second
+                factor.
+            </li>
+            <li>
+                Move the pointer to the corresponding value on the outer row.
+            </li>
+            <li>
+                If there are more factors to add, repeat from step 8 with the
+                next factor.
+            </li>
+            <li>
+                Use the resulting factor to tweak the first share as indicated
+                before in <em>Tweaking a Share</em>.
+            </li>
+            <li>
+                If there are more shares to tweak, repeat from step 4 with the
+                next one.
+            </li>
+        </ol>
+
+        <aside>
+            <em>Example:</em> Tweaking the shares A, C, E for recovery. Place
+            the small K-of-M wheel pointer over A. The corresponding values for
+            C and E are respectively 1 and 4. Write these as the factors for
+            tweaking A. Place the big K-of-M wheel pointer over first factor: 1.
+            Look for the "+5" label under the outer row. Place the pointer over
+            the corresponding value: 6. Tweak the share A using that factor.
+            Similarly, the tweaking factors for C and E are respectively 14+5=19
+            and 13+15=0.
+        </aside>
+    </section>
+</section>
