@@ -114,7 +114,9 @@ body {
     }
 
     @page {
-        margin: calc(1mm * var(--page-margin)) !important;
+        /* Firefox doesn't seem to support `calc` here */
+        /* margin: calc(1mm * var(--page-margin)); */
+        margin: 6.35mm;
     }
 
     .sheet {
