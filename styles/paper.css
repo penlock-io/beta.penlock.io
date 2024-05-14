@@ -18,6 +18,9 @@
     --height-ratio: calc(
         (297 - 2 * var(--page-margin)) / (210 - 2 * var(--page-margin))
     );
+
+    /* Disable Chromium's "force dark mode" */
+    color-scheme: only light !important;
 }
 
 /* Always */
