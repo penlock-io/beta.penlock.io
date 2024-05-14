@@ -52,7 +52,7 @@ export class WheelBase extends El {
 
             text {
                 text-anchor: middle;
-                alignment-baseline: central;
+                dominant-baseline: central;
             }
         `
     }

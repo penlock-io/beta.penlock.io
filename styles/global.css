@@ -61,9 +61,9 @@ svg {
     margin: auto;
 
     font-family: "Nimbus Mono PS", "Courier New", monospace;
+}
 
-    text {
-        text-anchor: middle;
-        alignment-baseline: central;
-    }
+svg text {
+    text-anchor: middle;
+    dominant-baseline: central;
 }

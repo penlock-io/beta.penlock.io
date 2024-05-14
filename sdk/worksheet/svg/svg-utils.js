@@ -26,7 +26,7 @@ export class SvgUtils extends El {
 
             text {
                 text-anchor: middle;
-                alignment-baseline: central;
+                dominant-baseline: central;
             }
 
             line {
