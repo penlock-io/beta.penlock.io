@@ -50,7 +50,7 @@ export class WordlistSheets extends El {
     styles(css) {
         return css`
             ul {
-                font-family: "Fira Mono";
+                font-family: var(--monospace);
 
                 list-style: none;
                 margin: 0;
