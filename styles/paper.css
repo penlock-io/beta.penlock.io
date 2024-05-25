@@ -113,6 +113,14 @@ body {
         --paper-width: calc(210mm - 2mm * var(--page-margin));
     }
 
+    /* Safari/Webkit print margins fix */
+    _::-webkit-full-page-media,
+    _:future,
+    :root {
+        --page-margin: 14;
+        --paper-height: calc(297mm - 4mm * var(--page-margin));
+    }
+
     @page {
         /* Firefox doesn't seem to support `calc` here */
         /* margin: calc(1mm * var(--page-margin)); */

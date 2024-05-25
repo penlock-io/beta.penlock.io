@@ -41,7 +41,11 @@ class Sizing {
     slider2() {
         const sizing = new Sizing(this)
         sizing.width = this.width
-        const margin = 0.635 * 2
+
+        // const margin = 0.635 * 2
+        const root = document.documentElement
+        const margin =
+            (2 / 100) * getComputedStyle(root).getPropertyValue("--page-margin")
         sizing.height = (sizing.width * (29.7 - margin)) / (21 - margin)
         return sizing
     }
