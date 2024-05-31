@@ -1,4 +1,6 @@
 @import url("../node_modules/normalize.css/normalize.css");
+@import url("./config.css");
 @import url("./paper.css");
 @import url("./global.css");
+@import url("./components.css");
 @import url("./utils.css");

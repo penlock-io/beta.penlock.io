@@ -43,13 +43,13 @@ export class GridlessTable extends El {
         return css`
             table {
                 font-family: var(--monospace);
-                border-spacing: 0.6em;
+                border-spacing: 0.5em;
             }
 
             td,
             th {
                 text-align: center;
-                letter-spacing: -0.1em;
+                letter-spacing: -0.05em;
             }
 
             tbody th {

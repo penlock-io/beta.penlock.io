@@ -10,6 +10,7 @@
 
 <script type="module">
     import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
     import "./sdk/penlock-bip39.js"
     import "./sdk/table/derivation-table.js"
 </script>
@@ -20,26 +21,42 @@
     }
 </style>
 
-<section class="post-it">
-    <h4>Recommendations:</h4>
-    <ul>
-        <li>Print on normal printer paper.</li>
-    </ul>
+<penlock-header
+    image="./assets/derive.png"
+    subtitle="Split a Seed Phrase (K-of-M)"
+    title="Derivation Tables"
+></penlock-header>
+
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h3>Recommendations</h3>
+
+        <ul>
+            <li>Print on normal printer paper.</li>
+        </ul>
+
+        <print-me></print-me>
+    </section>
 </section>
 
-<section class="sheet column">
-    <h3>Split a Seed Phrase (K-of-M) / Derivation Tables</h3>
-    <section>
-        <h4>3-of-M</h4>
-        <derivation-table k="3" m="26"></derivation-table>
+<section class="print">
+    <section class="sheet column strict">
+        <h3>Split a Seed Phrase (K-of-M) / Derivation Tables</h3>
+        <section>
+            <h4>3-of-M</h4>
+            <derivation-table k="3" m="26"></derivation-table>
+        </section>
+        <section>
+            <h4>4-of-M</h4>
+            <derivation-table k="4" m="26"></derivation-table>
+        </section>
+        <section>
+            <h4>5-of-M</h4>
+            <derivation-table k="5" m="26"></derivation-table>
+        </section>
+        <footer></footer>
     </section>
-    <section>
-        <h4>4-of-M</h4>
-        <derivation-table k="4" m="26"></derivation-table>
-    </section>
-    <section>
-        <h4>5-of-M</h4>
-        <derivation-table k="5" m="26"></derivation-table>
-    </section>
-    <footer></footer>
 </section>
+
+<penlock-footer></penlock-footer>

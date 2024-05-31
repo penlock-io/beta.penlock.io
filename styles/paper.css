@@ -18,28 +18,12 @@
     --height-ratio: calc(
         (297 - 2 * var(--page-margin)) / (210 - 2 * var(--page-margin))
     );
-
-    /* Disable Chromium's "force dark mode" */
-    color-scheme: only light !important;
 }
 
 /* Always */
 
-body {
-    max-width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
 .sheet {
-    /* position: relative; */
     overflow: hidden;
-    margin: 0;
-}
-
-.landscape {
-    transform: rotate(-90deg) translate(-100%);
-    transform-origin: top left;
 }
 
 /* On Screen */
@@ -47,42 +31,18 @@ body {
 @media screen {
     :root {
         /* FIXME: should not be 97.7vw, something's wrong somewhere */
-        --paper-width: min(97.7vw, 1em * var(--font-ratio));
+        --paper-width: min(96.6vw, 1rem * var(--font-ratio));
         --paper-height: calc(var(--paper-width) * var(--height-ratio));
         --paper-border: calc(var(--paper-width) * var(--margin-ratio));
 
         --paper-margin: var(--paper-border);
     }
 
-    body {
-        background: linear-gradient(#efefef, #e0e0e0);
-        /* TODO: a saner way to centrer pages */
-        padding: 0 calc((100% - var(--paper-width)) / 2);
-    }
-
-    .strict,
-    .landscape {
-        font-size: calc(var(--paper-width) / var(--font-ratio));
-    }
-
-    .sheet,
-    .card,
-    .post-it {
-        width: var(--paper-width);
-        margin: var(--paper-margin) 0;
-        border: solid var(--paper-border) white;
-        border-radius: 0.1em;
-
-        background: white;
-        /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); */
-        box-shadow:
-            0 3px 4px 0 rgba(0, 0, 0, 0.14),
-            0 1px 8px 0 rgba(0, 0, 0, 0.12),
-            0 3px 3px -2px rgba(0, 0, 0, 0.4);
-    }
-
     .sheet {
+        width: var(--paper-width);
         min-height: var(--paper-height);
+        /* margin: var(--paper-margin) 0; */
+        border: solid var(--paper-border) white;
     }
 
     .landscape {
@@ -91,17 +51,18 @@ body {
         min-height: var(--paper-width);
         max-height: var(--paper-width);
 
-        margin: 0;
-        margin-bottom: calc(
-            var(--paper-height) - var(--paper-width) + var(--paper-margin)
-        );
+        /* margin: 0; */
+        /* margin-bottom: calc( */
+        /*     var(--paper-height) - var(--paper-width) + var(--paper-margin) */
+        /* ); */
+        transform: rotate(-90deg) translate(-15%);
+        transform-origin: top 50%;
+        margin-bottom: calc(var(--paper-height) - var(--paper-width));
     }
 
-    .post-it,
-    .warning {
-        background: #ffeda5;
-        border-color: #ffeda5;
-        border-width: calc(var(--paper-border) / 4) var(--paper-border);
+    .strict,
+    .landscape {
+        font-size: calc(var(--paper-width) / var(--font-ratio));
     }
 }
 
@@ -136,6 +97,8 @@ body {
 
         print-color-adjust: exact !important;
         -webkit-print-color-adjust: exact !important;
+
+        shadow-box: unset;
     }
 
     .landscape {
@@ -143,12 +106,23 @@ body {
         max-width: var(--paper-height);
         min-height: calc(var(--paper-width) - 1mm);
         max-height: calc(var(--paper-width) - 1mm);
+
+        /* FIXME: a bit hacky ? */
+        transform: rotate(-90deg) translate(-100%);
+        transform-origin: top left;
+        margin-bottom: calc(var(--paper-height) - var(--paper-width) + 1mm);
     }
 
-    .noprint,
-    .noprint *,
-    .post-it {
-        display: none !important;
+    body > :not(.print) {
+        display: none;
+    }
+
+    body,
+    .print {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        background: white;
     }
 
     section,

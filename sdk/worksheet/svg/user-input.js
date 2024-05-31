@@ -68,8 +68,8 @@ export class UserInput extends SvgUtils {
 
     prefill({ x, y, value }) {
         const attrs = {
-            x: x + 5,
-            y: y - 4,
+            x: x + 4,
+            y: y - 3,
             fill: "grey",
             "font-size": 6,
         }

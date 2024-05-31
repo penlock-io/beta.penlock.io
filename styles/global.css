@@ -2,12 +2,68 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    /* Disable Chromium's "force dark mode" */
+    color-scheme: only light !important;
 }
 
 body {
-    font-family: sans-serif;
-    --monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
-        Consolas, "DejaVu Sans Mono", monospace;
+    width: 94.5em;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    padding: 1.7vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-xl);
+
+    font-family: var(--font-family);
+    font-optical-sizing: auto;
+    background: var(--gray-50);
+}
+
+body > :not(header):not(penlock-header):not(footer):not(penlock-footer) {
+    width: var(--paper-width);
+}
+
+body > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-s);
+}
+
+/* Blocks */
+
+h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: normal;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h4 {
+    margin: 0;
+    font-size: 1.15em;
+    font-weight: bold;
 }
 
 aside {
@@ -18,52 +74,21 @@ aside em {
     text-decoration: underline;
 }
 
-dd {
-    font-weight: bold;
-    margin-top: 0.4em;
-    margin-bottom: 0.4em;
-}
-
-/* Block */
-
-:is(h1, h2) {
-    text-align: center;
-}
-
-:is(h1, h2, h3, h4, h5, h6) {
-    margin: 1em;
-}
-
-ul {
-    list-style-type: "− ";
-}
-
 ul,
 ol {
+    padding: 0 0.3em;
+    list-style-position: inside;
 }
-/* ul { */
-/*     padding: 0; */
-/* } */
-/**/
-/* ul li { */
-/*     list-style: none; */
-/*     margin-top: 0.4em; */
-/**/
-/*     &:before { */
-/*         content: "−"; */
-/*         padding-right: 0.2em; */
-/*     } */
-/* } */
 
 /* Inline */
 
-svg {
-    margin: auto;
-
-    font-family: "Nimbus Mono PS", "Courier New", monospace;
+a {
+    color: var(--black);
+    text-underline-offset: 0.16em;
+    text-decoration-thickness: 1px;
 }
 
-svg text {
-    text-anchor: middle;
-    dominant-baseline: central;
+span img {
+    /* FIXME: hacky way to vertically-center according to line height */
+    margin-bottom: -0.15em;
 }

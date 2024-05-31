@@ -1,0 +1,263 @@
+/* Composition */
+
+.highlight1 {
+    background: var(--orange-400);
+}
+
+.highlight2 {
+    --shadow: var(--shadow-light);
+    --hover: var(--gray-800) !important;
+    --border: var(--gray-700);
+
+    background: var(--highlight2) !important;
+    color: var(--white);
+    fill: var(--white);
+}
+
+.highlight2 a {
+    color: var(--white);
+}
+
+.flat,
+.sheet .card {
+    box-shadow: unset;
+}
+
+@media print {
+    .card {
+        border-color: black;
+    }
+}
+
+/* Layout */
+
+.notes {
+    gap: var(--gap-xs);
+}
+.notes > .card {
+    align-items: center;
+    padding: min(2.25rem, 6.75vw) min(3rem, 6vw);
+
+    border-radius: 0.5rem;
+    border: unset;
+    background: var(--note-bg);
+}
+
+.card {
+    padding: min(2.25rem, 6.75vw) min(1.69rem, 3.4vw);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-s);
+    align-self: stretch;
+
+    border-radius: 1.5rem;
+    border: 1px solid transparent;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+@media screen {
+    .card {
+        border-color: var(--gray);
+    }
+}
+
+@media print {
+    .card {
+        border-color: black !important;
+    }
+}
+
+.card.note {
+    align-items: center;
+    padding: 2.25rem 3rem;
+
+    border-radius: 0.5rem;
+    border: unset;
+    background: var(--note-bg);
+}
+
+.card > header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.card > .description {
+    width: 58.3%;
+    min-width: min(26rem, 100%);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.card > .components {
+    width: 38.6%;
+    min-width: min(17rem, 100%);
+    align-self: end;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.card > .components aside {
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.card :is(p, ul, ol) {
+    margin: 0;
+    align-self: stretch;
+}
+
+@media screen {
+    .sheet {
+        background: var(--white);
+        border-color: var(--white);
+        box-shadow: var(--shadow-light);
+    }
+}
+
+/* TODO: This is old code. switch to flexbox design. */
+.sheet :is(h2, h3, h4, h5, h6) {
+    margin: 1em 0;
+}
+
+.guide :is(aside, ul, ol, p, dd) {
+    margin: 1em 0;
+}
+
+.guide .card {
+    width: 80%;
+    margin: 2em auto;
+    gap: var(--gap-xs);
+}
+
+.guide {
+    display: flex;
+    flex-direction: column;
+    flex-align: center;
+    gap: 1em;
+    padding: 0 min(2vw, 2em);
+}
+
+.guide > section {
+    width: 100%;
+    break-inside: auto;
+}
+
+.guide :is(h2, h3, h4, h5, h6) {
+    break-after: avoid;
+}
+
+.guide dd {
+    margin: 1.6em 0 0.6em 1em;
+    font-weight: bold;
+}
+
+.guide dt {
+    margin: 0.6em 0 1em 0;
+}
+
+.guide :is(ul, ol) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+@media screen {
+    .guide aside {
+        color: var(--gray-700);
+    }
+}
+
+/* Inline */
+
+:root {
+    --border: var(--gray-300);
+}
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-m);
+    align-self: stretch;
+}
+
+.buttons a,
+.button {
+    --hover: var(--gray-100);
+
+    display: flex;
+    padding: 1.125rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.125em;
+    line-height: 1.333em; /* 1.125 * 1.333 -> 1.5em */
+
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.buttons a img,
+.button img {
+    height: 1.333em; /* 1.125 * 1.333 -> 1.5em */
+}
+
+buttons .a:hover,
+.button:hover {
+    background: var(--hover) !important;
+}
+
+.difficulty {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+/* TODO: make this as a component? */
+.green-dot {
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.gray-dot {
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    background: #eaecf0;
+}
+
+/* FIXME: either use svg or classes but not both -~- */
+.dot {
+    /* width: 0.875em; */
+    /* height: 0.875em; */
+    /* margin:  */
+}
+
+.circled {
+    display: flex;
+    width: 3.5rem;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    background: #fffaeb;
+    box-shadow: var(--shadow);
+}

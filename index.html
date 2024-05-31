@@ -8,243 +8,366 @@
     <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
+</script>
+
 <style>
-    .card {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
+    body {
+        background: var(--white);
     }
 
-    .card header {
+    body > header {
+        font-size: min(min(1rem, 3vw), 2vh);
+    }
+
+    .fullscreen {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .fullscreen .logo {
         width: 100%;
+        padding: 6vh 0 0 8vw;
+
+        font-family: var(--monospace);
+        font-size: 2.25em;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+    }
+
+    .fullscreen .logo strong {
+        color: var(--highlight1);
+        font-weight: 600;
+    }
+
+    .fullscreen > section:not(.logo) {
+        max-width: var(--paper-width);
+        gap: 2.62em;
+    }
+
+    .fullscreen button {
         display: flex;
-        justify-content: space-between;
+        padding: 1em 1.333em;
+        justify-content: center;
         align-items: center;
+        gap: 0.889em;
+
+        border-radius: 1em;
+        border: 0.1em solid var(--gray);
+        background: var(--white);
+        color: var(--black);
+
+        font-size: 1.125em;
     }
 
-    .card header aside {
-        max-width: 60%;
+    .fullscreen .image {
+        height: min(intrinsic, 20vh);
     }
 
-    .card section {
-        width: 50%;
+    .fullscreen img {
+        height: 50%;
     }
 
-    .card nav {
-        display: inline-block;
-    }
-
-    .secondary {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .secondary .card {
-        margin-top: 0;
-        width: calc((var(--paper-width) - var(--paper-margin)) / 2);
-    }
-
-    .secondary .card section {
+    .fullscreen svg {
+        max-height: 40vh;
         width: 100%;
+    }
+
+    body > header p {
+        width: 33em;
+        /* FIXME: we should use paper-width, that should be in "REM" */
+        max-width: 100%;
+        margin: 1.125em 0;
+
+        font-size: 2em;
+        text-align: center;
+    }
+
+    :not(.notes) > .card > img:first-child {
+        height: 1.5em;
     }
 </style>
 
-<section class="post-it">
-    <h3>Hello, Peer!</h3>
-    <p>
-        Penlock is an open-source, cryptographically secure, printable
-        paper-computer. It guides users through secret-splitting their BIP39
-        seed phrase without an electronic device.
-    </p>
-    <p>
-        This is a beta release, exclusively intended for peer-reviewing and
-        early testing. The public release is planned for Q3 2024 and it is
-        likely,
-        <em>but not guaranteed</em>, to be backward-compatible with the present
-        documents. If we break compatibility, this beta-version will still be
-        available at the current address (beta.penlock.io).
-    </p>
-    <p>Please note that the following pieces are still missing:</p>
-    <ul>
-        <li>Professional UI/UX</li>
-        <li>Illustrated examples</li>
-        <li>The password generation guide</li>
-        <li>"Universal" browser compatibility</li>
-    </ul>
-    <p>
-        <em>Compatibility:</em> Penlock displays & prints well in Chromium-based
-        browsers (Chromium, Brave, Opera, Vivaldi, Edge, ...). There seems to be
-        issues with Firefox, and Safari hasn't been tested yet.
-    </p>
-</section>
-
-<h2>Main Features</h2>
-
-<section class="card">
-    <header>
-        <h3>Generate a Seed Phrase</h3>
-        <aside>(Difficulty: *)</aside>
-    </header>
-    <section>
-        <p>
-            Generate a 12-word seed phrase using real-world, provable
-            randomness.
-        </p>
-        <aside>Time required: ~30mins</aside>
-    </section>
-    <section>
-        <h4>What you'll need:</h4>
-        <ul>
-            <li>
-                <a target="_blank" href="./seed-guide.html"
-                    >The Seed Phrase Guide</a
-                >
-            </li>
-            <li>
-                <a target="_blank" href="./seed-worksheet.html"
-                    >The Seed Phrase Worksheet</a
-                >
-            </li>
-            <li>
-                <a target="_blank" href="./seed-wordlist.html"
-                    >The Seed Phrase Wordlist</a
-                >
-            </li>
-            <li><a target="_blank" href="./tiles.html">Penlock Tiles</a></li>
-        </ul>
-        <aside>+Wallet +Printer +Scissors +Pencil +Eraser</aside>
-    </section>
-</section>
-
-<section class="card">
-    <header>
-        <h3>Split a Seed Phrase (2-of-3)</h3>
-        <aside>(Difficulty: **)</aside>
-    </header>
-    <section>
-        <p>
-            Split a seed phrase into 3 cryptographically secure "shares"; any 2
-            of these can be used to recover the seed phrase. This is the
-            recommended backup strategy.
-        </p>
-        <aside>
-            <span>Time required:</span>
-            <ul>
-                <li>12 words: ~2h</li>
-                <li>24 words: ~3h</li>
-            </ul>
-        </aside>
-    </section>
-    <section>
-        <h4>What you'll need:</h4>
-        <ul>
-            <li>
-                <a target="_blank" href="./2of3-guide.html">The 2-of-3 Guide</a>
-            </li>
-            <li>
-                The 2-of-3 Worksheet:
-                <nav>
-                    <a target="_blank" href="./2of3-worksheet.html?words=12"
-                        >12-word</a
+<header class="column">
+    <div class="fullscreen column">
+        <div class="logo">penl<strong>o</strong>ck</div>
+        <section class="column title">
+            <h1>State-of-the-art seed phrase backup.</h1>
+            <button disabled>
+                <span>Beta now live</span>
+                <span class="green-dot"></span>
+            </button>
+        </section>
+        <section class="column image">
+            <!-- <img src="./assets/tweak.png"> -->
+            <!-- TODO: move this in its own component -->
+            <svg viewbox="0 0 100 50">
+                <defs>
+                    <pattern
+                        id="image"
+                        patternUnits="userSpaceOnUse"
+                        height="100"
+                        width="100"
                     >
-                    <a target="_blank" href="./2of3-worksheet2.html?words=18"
-                        >18-word</a
-                    >
-                    <a target="_blank" href="./2of3-worksheet2.html?words=24"
-                        >24-word</a
-                    >
-                </nav>
-            </li>
-            <li>
-                <a target="_blank" href="./2ofm-wheel.html">The 2-of-M Wheel</a>
-            </li>
-            <li><a target="_blank" href="./tiles.html">Penlock Tiles</a></li>
-        </ul>
-        <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
-    </section>
-</section>
+                        <image
+                            x="0"
+                            y="0"
+                            xlink:href="./assets/tweak.png"
+                            height="100"
+                            width="100"
+                        ></image>
+                    </pattern>
+                </defs>
+                <circle cx="50" cy="50" r="50" fill="url(#image)" />
+            </svg>
+        </section>
+    </div>
 
-<header>
-    <h2>Advanced Features</h2>
+    <p>
+        Penlock is an
+        <strong
+            >open-source, cryptographically secure, printable
+            paper-computer.</strong
+        >
+        It guides users through secret-splitting their BIP39 seed phrase without
+        an electronic device.
+    </p>
 </header>
 
-<div class="secondary">
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h2>Note from the developer</h2>
+        <p>
+            This is a beta release, exclusively intended for peer-reviewing and
+            early testing. The public release is planned for Q3 2024 and it is
+            likely,
+            <em>but not guaranteed</em>, to be backward-compatible with the
+            present documents. If we break compatibility, this beta-version will
+            still be available at the current address (beta.penlock.io).
+        </p>
+        <p>Please note that the following pieces are still missing:</p>
+        <ul>
+            <li>Illustrated examples</li>
+            <li>The password generation guide</li>
+        </ul>
+        <p>
+            Browser compatibility is still being worked on; Safari has known
+            printing issues, while Firefox and Chromium-based browsers are well
+            supported.
+        </p>
+    </section>
+    <!-- TODO: implement this part -->
+    <!-- <section class="card"> -->
+    <!--     <header> -->
+    <!--         <h2>Your feedback matters!</h2> -->
+    <!--         <p> -->
+    <!--             Help shaping the future of Penlock: a feedback form is available -->
+    <!--             for early testers! -->
+    <!--         </p> -->
+    <!--     </header> -->
+    <!--     <a class="button highlight2" href="#"> -->
+    <!--         <img src="./icons/feedback.svg" /> -->
+    <!--         <span>Share your feedback</span> -->
+    <!--     </a> -->
+    <!-- </section> -->
+</section>
+
+<section>
+    <h2>Getting things done</h2>
+
+    <section class="card highlight1">
+        <img src="./icons/cut.svg" />
+        <header>
+            <h3>Split a Seed Phrase (2-of-3)</h3>
+            <section class="difficulty">
+                <span>
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/gray-dot.svg" />
+                </span>
+                <span>Medium</span>
+            </section>
+        </header>
+
+        <section class="description">
+            <p>
+                Split a seed phrase into 3 cryptographically secure "shares";
+                any 2 of these can be used to recover the seed phrase. This is
+                the recommended backup strategy.
+            </p>
+            <aside>
+                <span>
+                    <img src="./icons/clock.svg" />
+                    Time required:
+                </span>
+                <ul>
+                    <li>12 words: ~2 hours</li>
+                    <li>24 words: ~3 hours</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="components">
+            <h4>You need to print:</h4>
+            <ul>
+                <li>
+                    <a href="./2of3-guide.html">The 2-of-3 Guide</a>
+                </li>
+                <li>
+                    A 2-of-3 Worksheet:
+                    <nav>
+                        <a href="./2of3-worksheet.html?words=12">12-word</a>
+                        <a href="./2of3-worksheet2.html?words=18">18-word</a>
+                        <a href="./2of3-worksheet2.html?words=24">24-word</a>
+                    </nav>
+                </li>
+                <li>
+                    <a href="./2ofm-wheel.html">The 2-of-M Wheel</a>
+                </li>
+                <li>
+                    <a href="./tiles.html">Penlock Tiles</a>
+                </li>
+            </ul>
+            <aside>+Craft Knife +Scissors +Pencil +Eraser</aside>
+        </section>
+    </section>
+    <section class="card highlight2">
+        <img src="./icons/phrase.svg" />
+        <header>
+            <h3>Generate a Seed Phrase</h3>
+            <section class="difficulty">
+                <span>
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/gray-dot.svg" />
+                    <img class="dot" src="./assets/gray-dot.svg" />
+                </span>
+                <span>Easy</span>
+            </section>
+        </header>
+
+        <section class="description">
+            <p>
+                Generate a 12-word seed phrase using real-world, provable
+                randomness.
+            </p>
+            <aside>
+                <span>
+                    <img src="./icons/clock-white.svg" />
+                    Time required: ~30 minutes
+                </span>
+            </aside>
+        </section>
+
+        <section class="components">
+            <h4>You need to print:</h4>
+            <ul>
+                <li>
+                    <a href="./seed-guide.html">The Seed Phrase Guide</a>
+                </li>
+                <li>
+                    <a href="./seed-worksheet.html"
+                        >The Seed Phrase Worksheet</a
+                    >
+                </li>
+                <li>
+                    <a href="./seed-wordlist.html">The Seed Phrase Wordlist</a>
+                </li>
+                <li><a href="./tiles.html">Penlock Tiles</a></li>
+            </ul>
+            <aside>+Wallet +Scissors +Pencil +Eraser</aside>
+        </section>
+    </section>
+</section>
+
+<section>
+    <h2>Advanced Features</h2>
+
     <section class="card">
         <header>
             <h3>Split a Seed Phrase (2-of-M)</h3>
-            <aside>(**)</aside>
+            <section class="difficulty">
+                <span>
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/gray-dot.svg" />
+                </span>
+                <span>Medium</span>
+            </section>
         </header>
-        <section>
+        <section class="description">
             <p>
                 Split a seed phrase into M cryptographically secure "shares";
                 any 2 of these can be used to recover the seed phrase. Prior
                 experience of the 2-of-3 guide is required.
             </p>
+            <aside>
+                <span>
+                    <img src="./icons/clock.svg" />
+                    Time required: ~3 hours
+                </span>
+            </aside>
         </section>
-        <aside>Time required: ~3h</aside>
-        <section>
-            <h4>What you'll need:</h4>
+        <section class="components">
+            <h4>You need to print:</h4>
             <ul>
                 <li>
-                    <a target="_blank" href="./2ofm-guide.html"
-                        >The 2-of-M Guide</a
-                    >
+                    <a href="./2ofm-guide.html">The 2-of-M Guide</a>
                 </li>
                 <li>
-                    The 2-of-M Worksheets:
+                    A 2-of-M Worksheets:
                     <nav>
-                        <a target="_blank" href="./2ofm-worksheet.html?words=12"
-                            >12-word</a
-                        >
-                        <a
-                            target="_blank"
-                            href="./2ofm-worksheet2.html?words=18"
-                            >18-word</a
-                        >
-                        <a
-                            target="_blank"
-                            href="./2ofm-worksheet2.html?words=24"
-                            >24-word</a
-                        >
+                        <a href="./2ofm-worksheet.html?words=12">12-word</a>
+                        <a href="./2ofm-worksheet2.html?words=18">18-word</a>
+                        <a href="./2ofm-worksheet2.html?words=24">24-word</a>
                     </nav>
                 </li>
                 <li>
-                    <a target="_blank" href="./2ofm-wheel.html"
-                        >The 2-of-M Wheel</a
-                    >
+                    <a href="./2ofm-wheel.html">The 2-of-M Wheel</a>
                 </li>
                 <li>
-                    <a target="_blank" href="./tiles.html">Penlock Tiles</a>
+                    <a href="./tiles.html">Penlock Tiles</a>
                 </li>
             </ul>
-            <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
+            <aside>+Craft Knife +Scissors +Pencil +Eraser</aside>
         </section>
     </section>
 
     <section class="card">
         <header>
             <h3>Split a Seed Phrase (K-of-M)</h3>
-            <aside>(***)</aside>
+            <section class="difficulty">
+                <span>
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/green-dot.svg" />
+                    <img class="dot" src="./assets/green-dot.svg" />
+                </span>
+                <span>Difficult</span>
+            </section>
         </header>
-        <section>
+        <section class="description">
             <p>
                 Split a seed phrase into M cryptographically secure "shares";
                 any K of these can be used to recover the seed phrase. Prior
                 experience of the 2-of-3 guide is required.
             </p>
-            <aside>Time required: ~4h</aside>
+            <aside>
+                <span>
+                    <img src="./icons/clock.svg" />
+                    Time required: ~4 hours
+                </span>
+            </aside>
         </section>
-        <section>
-            <h4>What you'll need:</h4>
+        <section class="components">
+            <h4>You need to print:</h4>
             <ul>
                 <li>
-                    <a target="_blank" href="./kofm-guide.html"
-                        >The K-of-M Guide</a
-                    >
+                    <a href="./kofm-guide.html">The K-of-M Guide</a>
                 </li>
                 <li>
-                    <a target="_blank" href="./kofm-tables.html"
+                    <a href="./kofm-tables.html"
                         >The K-of-M Derivation Tables</a
                     >
                 </li>
@@ -253,77 +376,33 @@
                     <br />
                     3-of-M:
                     <nav>
-                        <a target="_blank" href="./3ofm-worksheet.html?words=12"
-                            >12-word</a
-                        >
-                        <a target="_blank" href="./3ofm-worksheet.html?words=18"
-                            >18-word</a
-                        >
-                        <a target="_blank" href="./3ofm-worksheet.html?words=24"
-                            >24-word</a
-                        >
+                        <a href="./3ofm-worksheet.html?words=12">12-word</a>
+                        <a href="./3ofm-worksheet.html?words=18">18-word</a>
+                        <a href="./3ofm-worksheet.html?words=24">24-word</a>
                     </nav>
-                    <br />
                     4-of-M:
                     <nav>
-                        <a target="_blank" href="./4ofm-worksheet.html?words=12"
-                            >12-word</a
-                        >
-                        <a target="_blank" href="./4ofm-worksheet.html?words=18"
-                            >18-word</a
-                        >
+                        <a href="./4ofm-worksheet.html?words=12">12-word</a>
+                        <a href="./4ofm-worksheet.html?words=18">18-word</a>
                     </nav>
-                    <br />
                     5-of-M:
                     <nav>
-                        <a target="_blank" href="./5ofm-worksheet.html?words=12"
-                            >12-word</a
-                        >
+                        <a href="./5ofm-worksheet.html?words=12">12-word</a>
                     </nav>
                 </li>
                 <li>
-                    <a target="_blank" href="./kofm-wheels.html"
-                        >The K-of-M Wheels</a
-                    >
+                    <a href="./kofm-wheels.html">The K-of-M Wheels</a>
                 </li>
                 <li>
-                    <a target="_blank" href="./2ofm-wheel.html"
-                        >The 2-of-M Wheel</a
-                    >
+                    <a href="./2ofm-wheel.html">The 2-of-M Wheel</a>
                 </li>
                 <li>
-                    <a target="_blank" href="./tiles.html">Penlock Tiles</a>
+                    <a href="./tiles.html">Penlock Tiles</a>
                 </li>
             </ul>
-            <aside>+Printer +Scissors +Craft Knife +Pencil +Eraser</aside>
+            <aside>+Craft Knife +Scissors +Pencil +Eraser</aside>
         </section>
     </section>
-</div>
-
-<h2>Other</h2>
-
-<section class="card">
-    <header>
-        <h3>Community</h3>
-    </header>
-    <section>
-        <p>
-            Help us to build a supportive community! Feedback, contributions,
-            and questions are always welcome. :)
-        </p>
-    </section>
-    <ul>
-        <li>
-            <a href="https://matrix.to/#/#penlock:matrix.org" target="_blank"
-                >Chat on Matrix</a
-            >
-        </li>
-        <li>
-            <a
-                href="https://github.com/penlock-io/beta.penlock.io"
-                target="_blank"
-                >Contribute on Github</a
-            >
-        </li>
-    </ul>
 </section>
+
+<penlock-footer></penlock-footer>

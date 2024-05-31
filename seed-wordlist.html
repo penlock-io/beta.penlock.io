@@ -10,20 +10,33 @@
 
 <script type="module">
     import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
     import "./sdk/penlock-bip39.js"
     import "./sdk/table/wordlist-sheets.js"
 </script>
 
-<section class="post-it">
-    <h4>Recommendations:</h4>
-    <ul>
-        <li>Print one-sided on normal printer paper.</li>
-        <li>
-            <em>
-                Always use the printed document when looking for seed words.
-            </em>
-        </li>
-    </ul>
+<penlock-header
+    image="./assets/derive.png"
+    subtitle="Generate a Seed Phrase"
+    title="Wordlist"
+></penlock-header>
+
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h2>Recommendations:</h2>
+        <ul>
+            <li>Print one-sided on normal printer paper.</li>
+            <li>
+                <em>
+                    Always use the printed document when looking for seed words.
+                </em>
+            </li>
+        </ul>
+        <print-me></print-me>
+    </section>
 </section>
 
-<wordlist-sheets></wordlist-sheets>
+<section class="print">
+    <wordlist-sheets></wordlist-sheets>
+</section>

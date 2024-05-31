@@ -10,418 +10,450 @@
 
 <script type="module">
     import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
 </script>
 
 <style>
-    .sheet.column {
-        gap: 1em;
-    }
-
-    .sheet.column > section {
-        break-inside: auto;
-    }
-
-    .sheet.column h3 {
-        text-align: left;
-    }
-
-    dd {
-        margin-top: 1.6em;
-    }
-
-    .solving-table {
-        width: 60%;
-        margin: auto;
-
-        font-family: monospace;
-        font-size: 1.1em;
-        border: 1px solid black;
-        border-spacing: 0.4em;
-
+    .solving table {
+        width: 100%;
+        font-family: var(--monospace);
+        border-spacing: 0.6em;
         text-align: center;
+    }
+
+    .solving .card {
+        margin-bottom: 0.6em;
+        padding: 1.65em 1.09em;
+    }
+
+    .solving aside {
+        margin-top: 0;
     }
 </style>
 
-<section class="post-it">
-    <h4>Recommendations:</h4>
-    <ul>
-        <li>Print on normal printer paper.</li>
-        <li>Use the printed document when working with sensitive data.</li>
-    </ul>
-</section>
+<penlock-header
+    subtitle="Split a Seed Phrase (2-of-3)"
+    title="Guide"
+></penlock-header>
 
-<section class="sheet column">
-    <h2>Split a Seed Phrase (2-of-3) / Guide</h2>
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h3>Recommendations</h3>
 
-    <section>
-        <h3>Why?</h3>
-        <p>
-            Seed phrases are a convenient way to backup a wallet while
-            maintaining total and secure ownership. They do, however, have their
-            disadvantages. If the seed phrase is lost or stolen, then the funds
-            are at risk of being irremediably taken away. Another overlooked
-            drawback is that planning inheritance would require entrusting the
-            phrase to a third party, which once again places the funds at risk.
-        </p>
-        <p>
-            There's a straightforward, cryptographically secure way to solve
-            those issues: "secret splitting". A 2-of-3 split produces 3
-            "shares", out of which any 2 can be used to recover the seed phrase.
-            Each share can be stored in a separate location, and no single share
-            can be used to guess anything about the seed phrase. Inheritance can
-            be executed more securely, for instance by handing one share
-            directly to an heir, and leaving another as part of a will.
-        </p>
-    </section>
-
-    <section>
-        <h3>Components</h3>
-
-        <dd>Worksheet</dd>
-        <dt>
-            The worksheet has 4 sections: one for the secret (the seed phrase),
-            and 3 for the shares. Each section is structured the same way, with
-            gray, numbered fields for data, and white, lettered fields for
-            checksums.
-        </dt>
-
-        <dd>Wheel</dd>
-        <dt>
-            The wheel has 4 distinct sections: the outer row, the inner row, the
-            pointer (1), and the recovery spiral in the middle. In the spiral
-            section, 2-of-3 splitting only makes use of the window labeled (2).
-        </dt>
-
-        <dd>Tiles</dd>
-        <td>
-            The tiles will be used to pick random characters, with 2 tiles for
-            each of the 29 character, for a total of 58. The 6 pictogram tiles
-            will not be used here.
-        </td>
-    </section>
-
-    <section>
-        <h3>Steps Overview</h3>
-        <ol>
-            <li>Name the group of shares on the worksheet.</li>
-            <li>Write the seed phrase on the worksheet.</li>
-            <li>Generate a random share A using the tiles.</li>
-            <li>
-                Generate the checksums for the seed phrase and for share A using
-                the wheel.
-            </li>
-            <li>Derive shares B and C using the wheel.</li>
-            <li>Verify the checksums for shares B and C using the wheel.</li>
-            <li>
-                For first time users, recover the first seed word from shares B
-                and C to verify that the result is correct.
-            </li>
-        </ol>
-    </section>
-
-    <section>
-        <h3>Naming the Group of Shares</h3>
-        <p>
-            Each share has a <em>"Group:"</em> area for that purpose. Write the
-            brand and the model of the wallet securing the seed phrase, and the
-            date of creation of the shares (i.e.: <em>"Brand Model MM/DD"</em>).
-            This will serve as a unique identifier for this particular group of
-            shares. This can also serve as a recovery hint: despite seed phrases
-            being a standard, there might be compatibility quirks that can be
-            avoided by sticking to the same wallet model.
-        </p>
-    </section>
-
-    <section>
-        <h3>Writing the Seed Phrase</h3>
-        <p>
-            Write the seed phrase in the "Secret"" section of the worksheet,
-            ensuring only the gray fields are used and the numbering of words is
-            preserved. If a word is more than 4 characters long, write only
-            write the first 4 characters. If a word is only 3 characters long,
-            use a "-" (dash) as the final character.
-        </p>
-
-        <aside>
-            <em>Note:</em> 4 characters are enough to uniquely identify seed
-            words. The wallet recovery process doesn't require more.
-        </aside>
-    </section>
-
-    <section>
-        <h3>Generating a Random Share A</h3>
-        <p>
-            Tiles are a fast and reliable way to generate randomness
-            <em>if they are well-shuffled</em>. The wash shuffle is similar to
-            how children shuffle, i.e. by spreading the cards with both hands
-            and mixing them arbitrarily. This is considered one of the most
-            efficient ways to shuffle, and will ensure the security of the seed
-            phrase. Note that this way of shuffling works best on a fabric
-            surface.
-        </p>
-        <ol>
-            <li>
-                Remove the 6 tiles pictogram tiles, that will not be used here.
-                There should be 2 tiles for each of the 29 characters, for a
-                total of 58.
-            </li>
-            <li>Wash-shuffle the tiles thoroughly.</li>
-            <li>Pick up a tile randomly.</li>
-            <li>Copy its character into the share A's gray field.</li>
-            <li>
-                Put the tile back and repeat from step 2 until all share A's
-                gray boxes are filled.
-            </li>
-        </ol>
-    </section>
-
-    <section>
-        <h3>Generating the Checksums</h3>
-        <p>
-            Checksumming is essential for detecting and correcting any mistake
-            that could happen during the phrase splitting process. It guarantees
-            the soundness of the final result. To checksum the seed phrase, use
-            the wheel as follows:
-        </p>
-        <ol>
-            <li>
-                Skip the first checksum character (we will identify this in step
-                7).
-            </li>
-            <li>
-                Place the wheel pointer over the first character of the seed
-                phrase.
-            </li>
-            <li>
-                Find the second character of the seed phrase on the outer row.
-            </li>
-            <li>
-                The corresponding inner-row character is the
-                <em>second</em> character of the checksum. Write that character
-                in the white box under the second seed phrase character.
-            </li>
-            <li>
-                Now place the wheel pointer over the second character of the
-                seed phrase.
-            </li>
-            <li>
-                Find and write the third character of the checksum, located
-                under the third character of the seed phrase.
-            </li>
-            <li>
-                Continue until you reach the last character. Finally, place the
-                last seed character under the pointer and look under the first
-                character of the seed phrase for the first checksum character
-                that was skipped.
-            </li>
-        </ol>
-
-        <p>
-            Generate the checksum for the share A by following the same process.
-        </p>
-
-        <aside>
-            <em>Example:</em>
-            The checksum under the word "COIN" will be "?KVD". The first
-            checksum character is unknown because it depends on a previous word.
-            To find the others, place "C" under the pointer, then look for "O"
-            on the outer row, which faces "K". Then, move the pointer to "O",
-            and look for the value under "I", which is "V". Finally, move the
-            pointer to "I" and look for the value under "N", which is "D".
-        </aside>
-    </section>
-
-    <section>
-        <h3>Deriving More Shares</h3>
-        <p>
-            This is the most demanding part of the process; it is advised that
-            the user take a pause if they are beginning to lose focus. Deriving
-            shares is done through a similar process to checksumming, but with a
-            twist:
-        </p>
-        <ol>
-            <li>
-                Place the pointer on the first character of the seed phrase.
-            </li>
-            <li>Find the first character of share A on the outer row.</li>
-            <li>
-                Write the inner-row corresponding character as the first
-                character of share B.
-            </li>
-            <li>
-                Without moving the wheel, locate that first character of share B
-                on the outer row.
-            </li>
-            <li>
-                Write the inner-row corresponding character as the first
-                character of share C.
-            </li>
-            <li>
-                Repeat this process for each character until for both the gray
-                and white fields are filled.
-            </li>
-        </ol>
-    </section>
-
-    <section>
-        <h3>Verifying the Checksums</h3>
-        <p>
-            When deriving shares, the derived checksums will be correct unless
-            there was a mistake. Compute the checksums for shares B and C by
-            following the process explained in "Generate the Checksums", and
-            compare the results with the derived values. Each time the results
-            differ, circle the 3 characters involved in the operation.
-        </p>
-        <p>If mistakes were found, correct them as follow:</p>
-        <ol>
-            <li>
-                Redo the checksum for that group of characters on the secret
-                section.
-            </li>
-            <li>
-                Redo the checksum for that group of characters on the share A.
-            </li>
-            <li>Derive the 3 characters again.</li>
-            <li>Verify that this results in a correct checksum.</li>
-        </ol>
-        <aside>
-            <em>Tip:</em> In general, it is possible to guess which character is
-            erroneous. When a single group of 3 characters is circled, the
-            checksum character is likely culprit. When two consecutive groups of
-            3 characters are circled, then the character circled twice is likely
-            culprit.
-        </aside>
-    </section>
-
-    <section>
-        <h3>Recovering the First Word</h3>
-        <p>
-            A successful checksum verification is normally enough to guarantee
-            that all the shares are error-free. However, if this is your first
-            time following this process, it is recommended to recover the first
-            seed word to ensure that all the steps were followed correctly. This
-            is also a way to verify for yourself that this method is sound.
-        </p>
-        <p>
-            To do this, follow the steps described in
-            <em>Recovering the Seed Phrase</em> at the end of this guide,
-            recovering the first word <em>from shares B and C</em>.
-        </p>
-    </section>
-
-    <section>
-        <h3>Storing the Shares</h3>
-        <p>
-            The "Secret" part of the worksheet can now be destroyed, as well as
-            the original secret data. The other shares should be rewritten over
-            using permanent ink. The shares must be kept separately, and no two
-            shares must be accessible to anyone other than the wallet owner.
-            Below is an example of secure share distribution:
-        </p>
         <ul>
-            <li>Share A goes to the heir / trusted person.</li>
-            <li>
-                Share B is stored using a private and encrypted cloud storage
-                (or email draft).
-            </li>
-            <li>
-                Share C is stored physically in a safe or another secure storage
-                that can be passed on or willed to the inheritor.
-            </li>
-            <li>
-                If share C is not readily accessible, the wallet owner can keep
-                their own copy of share A to aid the recovery process.
-            </li>
+            <li>Print on normal printer paper.</li>
+            <li>Use the printed document when working with sensitive data.</li>
         </ul>
-        <p>
-            This redistribution ensures that the wallet owner can perform
-            on-site recovery without relying on the trusted person. Off-site
-            recovery is also possible by combining the trusted person's share
-            with the share stored online. It is paramount that the trusted
-            person shouldn't be able to easily access shares B or C outside of
-            the inheritance process, and that any shares other than B remain
-            fully offline.
-        </p>
-        <p>
-            It is advised to use water-proof containers such as stainless steel
-            pill bottles to protect physically-stored shares against damages. If
-            one of the share gets damaged, then the seed phrase can be recovered
-            from the other 2 shares, and the damaged share can be derived again.
-            If a share is lost or compromised, if the trusted person is no
-            longer trusted, or if inheritance must be revoked, a new split
-            followed by the destruction of the old shares will make the last
-            remaining share useless.
-        </p>
-    </section>
 
-    <section>
-        <h3>Recovering the Seed Phrase</h3>
-        <p>
-            To recover the seed phrase, pick two shares that belong to the same
-            group. Using the table below, identify which one should be the
-            <em>outer share</em> and which one the <em>inner share</em>. Take
-            note of the <em>solving window</em> for these shares.
-        </p>
-
-        <table class="solving-table">
-            <thead>
-                <th>Outer Share</th>
-                <th>Inner Share</th>
-                <th>Solving Window</th>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>A</td>
-                    <td>B</td>
-                    <td>①</td>
-                </tr>
-                <tr>
-                    <td>A</td>
-                    <td>C</td>
-                    <td>②</td>
-                </tr>
-                <tr>
-                    <td>B</td>
-                    <td>C</td>
-                    <td>①</td>
-                </tr>
-            </tbody>
-        </table>
-        <aside>
-            <span class="symbol">①</span> is the pointer, ② is in the middle of
-            the wheel
-        </aside>
-
-        <p>
-            Print a worksheet to write the seed phrase, then follow these steps:
-        </p>
-
-        <ol>
-            <li>
-                On the outer row of the wheel, find the first character of the
-                outer share.
-            </li>
-            <li>
-                On the inner row of the wheel, find the first character of the
-                inner share.
-            </li>
-            <li>Turn the wheel so that both character align.</li>
-            <li>
-                Read the first character of the seed phrase from the indicated
-                solving window.
-            </li>
-            <li>Write it on the worksheet in the correct position.</li>
-            <li>
-                Repeat from step 1 with the following characters until you have
-                recovered the complete phrase.
-            </li>
-        </ol>
-
-        <p>
-            For error checking, recover and verify the checksum. If errors are
-            found, solve them as indicated previously in
-            <em>Verifying the Checksums</em>.
-        </p>
+        <print-me></print-me>
     </section>
 </section>
+
+<section class="print">
+    <section class="sheet column guide">
+        <h2>Split a Seed Phrase (2-of-3) / Guide</h2>
+
+        <section>
+            <h3>Why?</h3>
+            <p>
+                Seed phrases are a convenient way to backup a wallet while
+                maintaining total and secure ownership. They do, however, have
+                their disadvantages. If the seed phrase is lost or stolen, then
+                the funds are at risk of being irremediably taken away. Another
+                overlooked drawback is that planning inheritance would require
+                entrusting the phrase to a third party, which once again places
+                the funds at risk.
+            </p>
+            <p>
+                There's a straightforward, cryptographically secure way to solve
+                those issues: "secret splitting". A 2-of-3 split produces 3
+                "shares", out of which any 2 can be used to recover the seed
+                phrase. Each share can be stored in a separate location, and no
+                single share can be used to guess anything about the seed
+                phrase. Inheritance can be executed more securely, for instance
+                by handing one share directly to an heir, and leaving another as
+                part of a will.
+            </p>
+        </section>
+
+        <section>
+            <h3>Components</h3>
+
+            <dd>Worksheet</dd>
+            <dt>
+                The worksheet has 4 sections: one for the secret (the seed
+                phrase), and 3 for the shares. Each section is structured the
+                same way, with gray, numbered fields for data, and white,
+                lettered fields for checksums.
+            </dt>
+
+            <dd>Wheel</dd>
+            <dt>
+                The wheel has 4 distinct sections: the outer row, the inner row,
+                the pointer (1), and the recovery spiral in the middle. In the
+                spiral section, 2-of-3 splitting only makes use of the window
+                labeled (2).
+            </dt>
+
+            <dd>Tiles</dd>
+            <dt>
+                The tiles will be used to pick random characters, with 2 tiles
+                for each of the 29 character, for a total of 58. The 6 pictogram
+                tiles will not be used here.
+            </dt>
+        </section>
+
+        <section>
+            <h3>Steps Overview</h3>
+            <ol>
+                <li>Name the group of shares on the worksheet.</li>
+                <li>Write the seed phrase on the worksheet.</li>
+                <li>Generate a random share A using the tiles.</li>
+                <li>
+                    Generate the checksums for the seed phrase and for share A
+                    using the wheel.
+                </li>
+                <li>Derive shares B and C using the wheel.</li>
+                <li>
+                    Verify the checksums for shares B and C using the wheel.
+                </li>
+                <li>
+                    For first time users, recover the first seed word from
+                    shares B and C to verify that the result is correct.
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Naming the Group of Shares</h3>
+            <p>
+                Each share has a <em>"Group:"</em> area for that purpose. Write
+                the brand and the model of the wallet securing the seed phrase,
+                and the date of creation of the shares (i.e.:
+                <em>"Brand Model MM/DD"</em>). This will serve as a unique
+                identifier for this particular group of shares. This can also
+                serve as a recovery hint: despite seed phrases being a standard,
+                there might be compatibility quirks that can be avoided by
+                sticking to the same wallet model.
+            </p>
+        </section>
+
+        <section>
+            <h3>Writing the Seed Phrase</h3>
+            <p>
+                Write the seed phrase in the "Secret"" section of the worksheet,
+                ensuring only the gray fields are used and the numbering of
+                words is preserved. If a word is more than 4 characters long,
+                write only write the first 4 characters. If a word is only 3
+                characters long, use a "-" (dash) as the final character.
+            </p>
+
+            <aside>
+                <em>Note:</em> 4 characters are enough to uniquely identify seed
+                words. The wallet recovery process doesn't require more.
+            </aside>
+        </section>
+
+        <section>
+            <h3>Generating a Random Share A</h3>
+            <p>
+                Tiles are a fast and reliable way to generate randomness
+                <em>if they are well-shuffled</em>. The wash shuffle is similar
+                to how children shuffle, i.e. by spreading the cards with both
+                hands and mixing them arbitrarily. This is considered one of the
+                most efficient ways to shuffle, and will ensure the security of
+                the seed phrase. Note that this way of shuffling works best on a
+                fabric surface.
+            </p>
+            <ol>
+                <li>
+                    Remove the 6 tiles pictogram tiles, that will not be used
+                    here. There should be 2 tiles for each of the 29 characters,
+                    for a total of 58.
+                </li>
+                <li>Wash-shuffle the tiles thoroughly.</li>
+                <li>Pick up a tile randomly.</li>
+                <li>Copy its character into the share A's gray field.</li>
+                <li>
+                    Put the tile back and repeat from step 2 until all share A's
+                    gray boxes are filled.
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Generating the Checksums</h3>
+            <p>
+                Checksumming is essential for detecting and correcting any
+                mistake that could happen during the phrase splitting process.
+                It guarantees the soundness of the final result. To checksum the
+                seed phrase, use the wheel as follows:
+            </p>
+            <ol>
+                <li>
+                    Skip the first checksum character (we will identify this in
+                    step 7).
+                </li>
+                <li>
+                    Place the wheel pointer over the first character of the seed
+                    phrase.
+                </li>
+                <li>
+                    Find the second character of the seed phrase on the outer
+                    row.
+                </li>
+                <li>
+                    The corresponding inner-row character is the
+                    <em>second</em> character of the checksum. Write that
+                    character in the white box under the second seed phrase
+                    character.
+                </li>
+                <li>
+                    Now place the wheel pointer over the second character of the
+                    seed phrase.
+                </li>
+                <li>
+                    Find and write the third character of the checksum, located
+                    under the third character of the seed phrase.
+                </li>
+                <li>
+                    Continue until you reach the last character. Finally, place
+                    the last seed character under the pointer and look under the
+                    first character of the seed phrase for the first checksum
+                    character that was skipped.
+                </li>
+            </ol>
+
+            <p>
+                Generate the checksum for the share A by following the same
+                process.
+            </p>
+
+            <aside>
+                <em>Example:</em>
+                The checksum under the word "COIN" will be "?KVD". The first
+                checksum character is unknown because it depends on a previous
+                word. To find the others, place "C" under the pointer, then look
+                for "O" on the outer row, which faces "K". Then, move the
+                pointer to "O", and look for the value under "I", which is "V".
+                Finally, move the pointer to "I" and look for the value under
+                "N", which is "D".
+            </aside>
+        </section>
+
+        <section>
+            <h3>Deriving More Shares</h3>
+            <p>
+                This is the most demanding part of the process; it is advised
+                that the user take a pause if they are beginning to lose focus.
+                Deriving shares is done through a similar process to
+                checksumming, but with a twist:
+            </p>
+            <ol>
+                <li>
+                    Place the pointer on the first character of the seed phrase.
+                </li>
+                <li>Find the first character of share A on the outer row.</li>
+                <li>
+                    Write the inner-row corresponding character as the first
+                    character of share B.
+                </li>
+                <li>
+                    Without moving the wheel, locate that first character of
+                    share B on the outer row.
+                </li>
+                <li>
+                    Write the inner-row corresponding character as the first
+                    character of share C.
+                </li>
+                <li>
+                    Repeat this process for each character until for both the
+                    gray and white fields are filled.
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Verifying the Checksums</h3>
+            <p>
+                When deriving shares, the derived checksums will be correct
+                unless there was a mistake. Compute the checksums for shares B
+                and C by following the process explained in "Generate the
+                Checksums", and compare the results with the derived values.
+                Each time the results differ, circle the 3 characters involved
+                in the operation.
+            </p>
+            <p>If mistakes were found, correct them as follow:</p>
+            <ol>
+                <li>
+                    Redo the checksum for that group of characters on the secret
+                    section.
+                </li>
+                <li>
+                    Redo the checksum for that group of characters on the share
+                    A.
+                </li>
+                <li>Derive the 3 characters again.</li>
+                <li>Verify that this results in a correct checksum.</li>
+            </ol>
+            <aside>
+                <em>Tip:</em> In general, it is possible to guess which
+                character is erroneous. When a single group of 3 characters is
+                circled, the checksum character is likely culprit. When two
+                consecutive groups of 3 characters are circled, then the
+                character circled twice is likely culprit.
+            </aside>
+        </section>
+
+        <section>
+            <h3>Recovering the First Word</h3>
+            <p>
+                A successful checksum verification is normally enough to
+                guarantee that all the shares are error-free. However, if this
+                is your first time following this process, it is recommended to
+                recover the first seed word to ensure that all the steps were
+                followed correctly. This is also a way to verify for yourself
+                that this method is sound.
+            </p>
+            <p>
+                To do this, follow the steps described in
+                <em>Recovering the Seed Phrase</em> at the end of this guide,
+                recovering the first word <em>from shares B and C</em>.
+            </p>
+        </section>
+
+        <section>
+            <h3>Storing the Shares</h3>
+            <p>
+                The "Secret" part of the worksheet can now be destroyed, as well
+                as the original secret data. The other shares should be
+                rewritten over using permanent ink. The shares must be kept
+                separately, and no two shares must be accessible to anyone other
+                than the wallet owner. Below is an example of secure share
+                distribution:
+            </p>
+            <ul>
+                <li>Share A goes to the heir / trusted person.</li>
+                <li>
+                    Share B is stored using a private and encrypted cloud
+                    storage (or email draft).
+                </li>
+                <li>
+                    Share C is stored physically in a safe or another secure
+                    storage that can be passed on or willed to the inheritor.
+                </li>
+                <li>
+                    If share C is not readily accessible, the wallet owner can
+                    keep their own copy of share A to aid the recovery process.
+                </li>
+            </ul>
+            <p>
+                This redistribution ensures that the wallet owner can perform
+                on-site recovery without relying on the trusted person. Off-site
+                recovery is also possible by comyining the trusted person's
+                share with the share stored online. It is paramount that the
+                trusted person shouldn't be able to easily access shares B or C
+                outside of the inheritance process, and that any shares other
+                than B remain fully offline.
+            </p>
+            <p>
+                It is advised to use water-proof containers such as stainless
+                steel pill bottles to protect physically-stored shares against
+                damages. If one of the share gets damaged, then the seed phrase
+                can be recovered from the other 2 shares, and the damaged share
+                can be derived again. If a share is lost or compromised, if the
+                trusted person is no longer trusted, or if inheritance must be
+                revoked, a new split followed by the destruction of the old
+                shares will make the last remaining share useless.
+            </p>
+        </section>
+
+        <section>
+            <h3>Recovering the Seed Phrase</h3>
+            <p>
+                To recover the seed phrase, pick two shares that belong to the
+                same group. Using the table below, identify which one should be
+                the <em>outer share</em> and which one the <em>inner share</em>.
+                Take note of the <em>solving window</em> for these shares.
+            </p>
+
+            <section class="column solving">
+                <div class="card">
+                    <table>
+                        <thead>
+                            <th>Outer Share</th>
+                            <th></th>
+                            <th>Inner Share</th>
+                            <th></th>
+                            <th>Solving Window</th>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>+</td>
+                                <td>B</td>
+                                <td>→</td>
+                                <td>①</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>+</td>
+                                <td>C</td>
+                                <td>→</td>
+                                <td>②</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>+</td>
+                                <td>C</td>
+                                <td>→</td>
+                                <td>①</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <aside>
+                    <span class="symbol">①</span> is the pointer, ② is in the
+                    middle of the wheel
+                </aside>
+            </section>
+
+            <p>
+                Print a worksheet to write the seed phrase, then follow these
+                steps:
+            </p>
+
+            <ol>
+                <li>
+                    On the outer row of the wheel, find the first character of
+                    the outer share.
+                </li>
+                <li>
+                    On the inner row of the wheel, find the first character of
+                    the inner share.
+                </li>
+                <li>Turn the wheel so that both character align.</li>
+                <li>
+                    Read the first character of the seed phrase from the
+                    indicated solving window.
+                </li>
+                <li>Write it on the worksheet in the correct position.</li>
+                <li>
+                    Repeat from step 1 with the following characters until you
+                    have recovered the complete phrase.
+                </li>
+            </ol>
+
+            <p>
+                For error checking, recover and verify the checksum. If errors
+                are found, solve them as indicated previously in
+                <em>Verifying the Checksums</em>.
+            </p>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

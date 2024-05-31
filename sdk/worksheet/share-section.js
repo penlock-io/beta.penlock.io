@@ -24,13 +24,14 @@ export class ShareSection extends El {
     styles(css) {
         return css`
             :host > section {
-                border: 1px dashed black;
-                border-radius: 0.4em;
                 padding: 0.4em;
+                border: 1px dashed black;
+                border-radius: 0.35em;
             }
 
             header {
                 width: 40%;
+                min-width: 15%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -44,11 +45,6 @@ export class ShareSection extends El {
                 justify-content: space-between;
                 align-items: center;
             }
-
-            header h4 {
-                margin: 0;
-            }
-
             header section {
                 height: 100%;
             }

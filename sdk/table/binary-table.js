@@ -27,18 +27,18 @@ class BinaryTable extends El {
 
             section {
                 font-family: var(--monospace);
+                width: 100%
             }
 
             ul {
-                margin: 0.4em;
-                padding-left: 0;
                 list-style: none;
                 column-count: 4;
+                padding 0;
             }
 
             li {
-                margin: 0em !important;
                 padding: 0.2em;
+                text-align: center;
             }
         `
     }

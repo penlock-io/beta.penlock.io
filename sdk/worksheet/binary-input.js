@@ -30,12 +30,10 @@ export class BinaryInput extends El {
     styles(css) {
         return css`
             ol {
-                margin: 0;
-                padding: 0.2em 0 0 1.6em;
-            }
-
-            li {
-                padding: 0.2em;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: 0.4em;
             }
         `
     }

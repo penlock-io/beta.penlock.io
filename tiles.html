@@ -3,13 +3,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Tiles</title>
+    <title>Penlock Tiles</title>
 
     <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
 <script type="module">
     import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
     import "./sdk/penlock-bip39.js"
     import "./sdk/table/tiles-table.js"
 </script>
@@ -23,25 +24,44 @@
     }
 </style>
 
-<section class="post-it">
-    <h4>Recommendations:</h4>
-    <ul>
-        <li>
-            Print this document double-sided, preferably on thick paper, such as
-            photo paper.
-        </li>
-        <li>
-            Carefully cut the tiles along the black lines, so that the tiles are
-            equally sized.
-        </li>
-        <li>Check that the tiles have the same character on both sides.</li>
-    </ul>
+<penlock-header
+    image="./assets/derive.png"
+    title="Penlock Tiles"
+></penlock-header>
+
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h3>Recommendations</h3>
+        <ul>
+            <li>
+                Print this document double-sided, preferably on thick paper,
+                such as photo paper.
+            </li>
+        </ul>
+        <print-me></print-me>
+    </section>
+
+    <section class="card">
+        <h3>Assembly</h3>
+        <ol>
+            <li>
+                Carefully cut the tiles along the black lines, so that the tiles
+                are equally sized.
+            </li>
+            <li>Check that the tiles have the same character on both sides.</li>
+        </ol>
+    </section>
 </section>
 
-<section class="sheet column">
-    <tiles-table borders="true"></tiles-table>
+<section class="print">
+    <section class="sheet column strict">
+        <tiles-table borders="true"></tiles-table>
+    </section>
+
+    <section class="sheet column strict">
+        <tiles-table></tiles-table>
+    </section>
 </section>
 
-<section class="sheet column">
-    <tiles-table></tiles-table>
-</section>
+<penlock-footer></penlock-footer>

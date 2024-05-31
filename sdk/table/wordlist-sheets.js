@@ -53,24 +53,21 @@ export class WordlistSheets extends El {
                 font-family: var(--monospace);
 
                 list-style: none;
-                margin: 0;
-                padding-left: 0;
+                padding: 0;
 
-                font-size: 62.8%;
+                font-size: 62.7%;
                 column-count: 8;
                 column-gap: 0.6em;
             }
 
             li {
                 overflow: hidden;
-                padding: 0 0.2em !important;
-                margin: 0 !important;
-
                 text-transform: uppercase;
             }
 
             li:nth-child(16n) {
                 border-bottom: solid 1px black;
+                margin-bottom: 0.25px;
             }
 
             .greyed {
