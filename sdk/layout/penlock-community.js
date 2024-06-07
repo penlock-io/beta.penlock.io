@@ -10,6 +10,14 @@ export class PenlockCommunity extends El {
             </header>
             <nav class="buttons">
                 <a
+                    class="button highlight2"
+                    href="https://tally.so/r/wQrJVk"
+                    target="_blank"
+                >
+                    <img src="./icons/feedback.svg" />
+                    <span>Share your feedback</span>
+                </a>
+                <a
                     href="https://matrix.to/#/#penlock:matrix.org"
                     target="_blank"
                     class="button"
