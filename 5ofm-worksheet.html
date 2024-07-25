@@ -10,6 +10,7 @@
 
 <script type="module">
     import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
     import "./sdk/worksheet/share-section.js"
 </script>
 
@@ -29,228 +30,254 @@
     }
 </style>
 
-<section class="post-it">
-    <h4>Recommendations:</h4>
-    <ul>
-        <li>Print one-sided on normal printer paper.</li>
-    </ul>
-</section>
+<penlock-header
+    image="./assets/derive.png"
+    subtitle="Split a Seed Phrase (K-of-M)"
+    title="Worksheet"
+></penlock-header>
 
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Random Shares</h3>
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h3>Recommendations</h3>
 
-    <section class="column">
-        <share-section
-            header="Secret"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section header="Share A" scheme="5-of-__"></share-section>
-        <share-section header="Share B" scheme="5-of-__"></share-section>
-        <share-section header="Share C" scheme="5-of-__"></share-section>
-        <share-section header="Share D" scheme="5-of-__"></share-section>
+        <ul>
+            <li>Print one-sided on normal printer paper.</li>
+        </ul>
+
+        <print-me></print-me>
     </section>
 </section>
 
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Derived Shares</h3>
+<section class="print">
+    <section class="sheet landscape row">
+        <h3>Split a Seed Phrase (5-of-M) / Worksheet / Random Shares</h3>
 
-    <section class="column">
-        <share-section header="Share __" scheme="5-of-__"></share-section>
-        <share-section header="Share __" scheme="5-of-__"></share-section>
-        <share-section header="Share __" scheme="5-of-__"></share-section>
-        <share-section header="Share __" scheme="5-of-__"></share-section>
-        <share-section header="Share __" scheme="5-of-__"></share-section>
+        <section class="column">
+            <share-section
+                header="Secret"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section header="Share A" scheme="5-of-__"></share-section>
+            <share-section header="Share B" scheme="5-of-__"></share-section>
+            <share-section header="Share C" scheme="5-of-__"></share-section>
+            <share-section header="Share D" scheme="5-of-__"></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>Split a Seed Phrase (5-of-M) / Worksheet / Derived Shares</h3>
+
+        <section class="column">
+            <share-section header="Share __" scheme="5-of-__"></share-section>
+            <share-section header="Share __" scheme="5-of-__"></share-section>
+            <share-section header="Share __" scheme="5-of-__"></share-section>
+            <share-section header="Share __" scheme="5-of-__"></share-section>
+            <share-section header="Share __" scheme="5-of-__"></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>
+            Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)
+        </h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Secret"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share A"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share B"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share C"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share D"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>
+            Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)
+        </h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Secret"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share A"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share B"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share C"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share D"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>
+            Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)
+        </h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Secret"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share A"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share B"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share C"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share D"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>
+            Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)
+        </h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Secret"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share A"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share B"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share C"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share D"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>
+            Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)
+        </h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Secret"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share A"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share B"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share C"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share D"
+                prompt="Factor: ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (recovery)</h3>
+
+        <section class="column">
+            <share-section
+                header="Tweaked Share __"
+                prompt="Factors: ___ + ___ + ___ + ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share __"
+                prompt="Factors: ___ + ___ + ___ + ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share __"
+                prompt="Factors: ___ + ___ + ___ + ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share __"
+                prompt="Factors: ___ + ___ + ___ + ___"
+                footer="Cut & burn once done"
+            ></share-section>
+            <share-section
+                header="Tweaked Share __"
+                prompt="Factors: ___ + ___ + ___ + ___"
+                footer="Cut & burn once done"
+            ></share-section>
+        </section>
     </section>
 </section>
 
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Secret"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share A"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share B"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share C"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share D"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
-
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Secret"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share A"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share B"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share C"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share D"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
-
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Secret"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share A"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share B"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share C"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share D"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
-
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Secret"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share A"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share B"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share C"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share D"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
-
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (derivation)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Secret"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share A"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share B"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share C"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share D"
-            prompt="Factor: ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
-
-<section class="sheet landscape row">
-    <h3>Split a Seed Phrase (5-of-M) / Worksheet / Tweaking (recovery)</h3>
-
-    <section class="column">
-        <share-section
-            header="Tweaked Share __"
-            prompt="Factors: ___ + ___ + ___ + ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share __"
-            prompt="Factors: ___ + ___ + ___ + ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share __"
-            prompt="Factors: ___ + ___ + ___ + ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share __"
-            prompt="Factors: ___ + ___ + ___ + ___"
-            footer="Cut & burn once done"
-        ></share-section>
-        <share-section
-            header="Tweaked Share __"
-            prompt="Factors: ___ + ___ + ___ + ___"
-            footer="Cut & burn once done"
-        ></share-section>
-    </section>
-</section>
+<penlock-footer></penlock-footer>
