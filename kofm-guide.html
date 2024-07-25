@@ -64,7 +64,13 @@
             <p>
                 While a 2-of-3 split is a good enough backup strategy, the
                 K-of-M generalization is sometimes needed for sophisticated use
-                cases such as social recovery.
+                cases such as social recovery. With this method, up to 26 shares
+                shares can be generated. A recovery threshold is chosen by the
+                user (the "K" in "K-of-M"); it indicates the number of shares
+                that will be needed to recover the seed phrase, while less than
+                "K" shares won't leak any information. For example, a 3-of-5
+                split will generate 5 shares and require 3 of them to recover
+                the seed phrase.
             </p>
             <p>
                 It is worth noting that the K-of-M split uses a different

@@ -99,8 +99,8 @@
             <dd>Tiles</dd>
             <dt>
                 The tiles will be used to pick random characters, with 2 tiles
-                for each of the 29 character, for a total of 58. The 6 pictogram
-                tiles will not be used here.
+                for each of the 29 characters. The 3 pairs of emoji tiles will
+                not be used here.
             </dt>
         </section>
 
@@ -187,8 +187,8 @@
             <p>
                 Checksumming is essential for detecting and correcting any
                 mistake that could happen during the phrase splitting process.
-                It guarantees the soundness of the final result. To checksum the
-                seed phrase, use the wheel as follows:
+                It guarantees the soundness of the final result. To generate the
+                checksums, use the wheel as follows:
             </p>
             <ol>
                 <li>
@@ -223,12 +223,11 @@
                     first character of the seed phrase for the first checksum
                     character that was skipped.
                 </li>
+                <li>
+                    Generate the checksum for the share A by following the same
+                    process.
+                </li>
             </ol>
-
-            <p>
-                Generate the checksum for the share A by following the same
-                process.
-            </p>
 
             <aside>
                 <em>Example:</em>
@@ -268,8 +267,8 @@
                     character of share C.
                 </li>
                 <li>
-                    Repeat this process for each character until for both the
-                    gray and white fields are filled.
+                    Repeat from step 1 for each character until both the gray
+                    and white fields are filled.
                 </li>
             </ol>
         </section>
@@ -277,12 +276,14 @@
         <section>
             <h3>Verifying the Checksums</h3>
             <p>
-                When deriving shares, the derived checksums will be correct
-                unless there was a mistake. Compute the checksums for shares B
-                and C by following the process explained in "Generate the
-                Checksums", and compare the results with the derived values.
-                Each time the results differ, circle the 3 characters involved
-                in the operation.
+                This step reveals any mistake that might have occured so far and
+                guarantees the correctness of the shares.
+            </p>
+            <p>
+                Compute the checksums for shares B and C by following the
+                process explained in "Generate the Checksums", and compare the
+                results with the derived values. Each time the results differ,
+                circle the 3 characters involved in the operation.
             </p>
             <p>If mistakes were found, correct them as follow:</p>
             <ol>
