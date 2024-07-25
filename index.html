@@ -11,6 +11,7 @@
 <script type="module">
     import "./sdk/framework.js"
     import "./sdk/layout/all.js"
+    import "./sdk/layout/difficulty-dot.js"
 </script>
 
 <style>
@@ -190,12 +191,10 @@
         <header>
             <h3>Split a Seed Phrase (2-of-3)</h3>
             <section class="difficulty">
-                <span>
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/gray-dot.svg" />
-                </span>
-                <span>Medium</span>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot empty></difficulty-dot>
+                <span>Difficulty: Medium</span>
             </section>
         </header>
 
@@ -246,12 +245,10 @@
         <header>
             <h3>Generate a Seed Phrase</h3>
             <section class="difficulty">
-                <span>
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/gray-dot.svg" />
-                    <img class="dot" src="./assets/gray-dot.svg" />
-                </span>
-                <span>Easy</span>
+                <difficulty-dot color="white"></difficulty-dot>
+                <difficulty-dot color="white" empty></difficulty-dot>
+                <difficulty-dot color="white" empty></difficulty-dot>
+                <span>Difficulty: Easy</span>
             </section>
         </header>
 
@@ -296,12 +293,10 @@
         <header>
             <h3>Split a Seed Phrase (2-of-M)</h3>
             <section class="difficulty">
-                <span>
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/gray-dot.svg" />
-                </span>
-                <span>Medium</span>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot empty></difficulty-dot>
+                <span>Difficulty: Medium</span>
             </section>
         </header>
         <section class="description">
@@ -346,12 +341,10 @@
         <header>
             <h3>Split a Seed Phrase (K-of-M)</h3>
             <section class="difficulty">
-                <span>
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/green-dot.svg" />
-                    <img class="dot" src="./assets/green-dot.svg" />
-                </span>
-                <span>Difficult</span>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot></difficulty-dot>
+                <difficulty-dot></difficulty-dot>
+                <span>Difficulty: Hard</span>
             </section>
         </header>
         <section class="description">
