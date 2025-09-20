@@ -31,6 +31,12 @@
 
 /* Layout */
 
+upgrade-banner {
+    position: absolute;
+    width: 100% !important;
+    top: 0;
+}
+
 .notes {
     gap: var(--gap-xs);
 }

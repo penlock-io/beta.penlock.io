@@ -26,6 +26,16 @@
     overflow: hidden;
 }
 
+.banner {
+    position: absolute;
+    width: 100%;
+    padding: 0.6em;
+    background: tomato;
+    font-size: 1.6em;
+    text-align: center;
+    top: 0;
+}
+
 /* On Screen */
 
 @media screen {

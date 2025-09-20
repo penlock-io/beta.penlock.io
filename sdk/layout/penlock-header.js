@@ -1,8 +1,10 @@
 import "./penlock-logo.js"
+import "./upgrade-banner.js"
 
 export class PenlockHeader extends El {
     render(html) {
         return html`
+            <upgrade-banner></upgrade-banner>
             <penlock-logo href="${location.hostname}"></penlock-logo>
             <header class="column">
                 <span class="subtitle">${this.subtitle}</span>
